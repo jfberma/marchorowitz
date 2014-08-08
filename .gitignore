@@ -13,6 +13,7 @@ celerybeat-schedule
 /parts
 /src
 /temp
+/etc
 .installed.cfg
 .mr.developer.cfg
 .Python
