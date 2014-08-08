@@ -12,4 +12,5 @@ git clone --bare git@github.com:jfberma/django-nginx-jumpstart.git
 cd django-nginx-jumpstart
 git push --mirror [YOUR_NEW_REPO_URL]
 ```
+
 2. ```cd``` into the new repo and edit ```buildout.cfg``` to include your enviroment's database details
