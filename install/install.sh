@@ -7,13 +7,13 @@ test ! -f /usr/bin/yum || sudo yum -y install ant-apache-regexp curl-devel fontc
 test ! -f /opt/local/bin/port || sudo port install libgeoip libyaml memcached mysql56-server mysql56 openssl pcre redis s3cmd wget zlib
 
 mkdir src
-test -d src/Python-2.7.6 || tar zxv -C ./src/ -f install/download-cache/Python-2.7.6.tgz
+test -d src/Python-2.7.8 || tar zxv -C ./src/ -f install/download-cache/Python-2.7.8.tgz
 test -d parts/python || mkdir -p parts/python
-cd src/Python-2.7.6
+cd src/Python-2.7.8
 ./configure --prefix=$PROJECT_ROOT/parts/python
-echo "Building Python 2.7.6"
+echo "Building Python 2.7.8"
 make
-echo "Installing Python 2.7.6"
+echo "Installing Python 2.7.8"
 make install
 cd ../..
 
