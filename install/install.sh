@@ -18,3 +18,6 @@ make install
 cd ../..
 
 ./parts/python/bin/python2.7 install/virtualenv.py -p ./parts/python/bin/python2.7 --no-site-packages .
+
+python bootstrap.py
+bin/buildout
