@@ -40,3 +40,4 @@ aws-credentials.txt
 scripts/copyHiveLogsToS3.sh
 /.s3cfg
 djangoroot/project/settings_local.py
+buildout.cfg
