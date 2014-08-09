@@ -28,7 +28,7 @@ STATIC_ROOT = '${buildout:directory}/var/static/'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '${project-env:uploads-store-path}/'
+MEDIA_ROOT = ''
 
 # Additional locations of static files
 STATICFILES_DIRS = (
