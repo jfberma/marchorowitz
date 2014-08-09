@@ -3,6 +3,10 @@ Django Nginx Jumpstart
 
 This repo contains a template for quickly setting up a Django/Nginx/Postgres/Supervisor environment. Inspired by https://github.com/oleksandr/django-buildout-layout.
 
+Prerequisites
+=============
+Postgres, and a DB with proper permissions
+
 Get Started
 ===========
 
