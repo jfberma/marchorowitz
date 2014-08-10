@@ -63,4 +63,5 @@ INSTALLED_APPS = (
     'django_extensions',
     'project',
     'project.core',
+    'rest_framework',
 )
