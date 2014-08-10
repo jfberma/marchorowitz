@@ -66,6 +66,5 @@ INSTALLED_APPS = (
     'project',
     'project.core',
     'rest_framework',
-    'util',
     'github_hook',
 )
