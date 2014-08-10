@@ -6,7 +6,7 @@ This is an AUTOMATICALLY GENERATED file.
 DEBUG = ${project-env:django-debug}
 TEMPLATE_DEBUG = DEBUG
 
-ENVIRONMENT = ${project-env:env-name}
+ENVIRONMENT = '${project-env:env-name}'
 
 DATABASES = {
     'default': {
@@ -67,4 +67,5 @@ INSTALLED_APPS = (
     'project.core',
     'rest_framework',
     'util',
+    'github_hook',
 )
