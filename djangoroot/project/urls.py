@@ -4,6 +4,8 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 
 from shop import urls as shop_urls
+from shop.models.productmodel import Product
+from shop.views.order import ShopListView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
