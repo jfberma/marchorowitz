@@ -47,8 +47,6 @@ TEMPLATE_DIRS = (
     '${buildout:directory}/djangoroot/project/templates',
 )
 
-AUTH_USER_MODEL = 'core.User'
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -64,7 +62,9 @@ INSTALLED_APPS = (
     'south',
     'django_extensions',
     'project',
-    'project.core',
     'rest_framework',
     'github_hook',
+    'polymorphic', # We need polymorphic installed for the shop
+    'shop', # The django SHOP application
+    'shop.addressmodel', # The default Address and country models
 )
