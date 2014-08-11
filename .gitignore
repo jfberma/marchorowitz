@@ -13,6 +13,7 @@ celerybeat-schedule
 /parts
 /src
 /temp
+/downloads
 /etc
 /var
 /media
