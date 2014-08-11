@@ -11,5 +11,6 @@ bin/buildout
 bin/django syncdb
 bin/django migrate
 #bin/django check_permissions
+bin/django_static collectstatic -c -l --noinput
 echo "starting servers"
 bin/supervisorctl start all
