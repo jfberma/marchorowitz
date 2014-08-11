@@ -1,12 +1,26 @@
 {% load staticfiles %}
 <html>
 <head>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/project.css' %}">
 
 </head>
 <body>
-{% block content %}
-{% endblock %}
+    <ul class="menu">
+        <li>1</li>
+        <li>2</li>
+        <li><a href="#" class="graph"></a></li>
+        <li><a href="#" class="user"></a></li>
+        <li><a href="#" class="mine"></a></li>
+        <li><a href="#" class="contact"></a></li>
+    </ul>
+    <div id="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        cdsac
+    </footer>
 </body>
 </html>
