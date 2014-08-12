@@ -4,7 +4,6 @@
     <div style="display: none;">{% products %}</div>
     {% for object in products %}
         <div class="item">
-            cdsacdsa
             <p class="title">{{object.name}} - <span>h{{object.unit_price}}</span> - <a href="">buy</a></p>
             <a href="{{object.get_absolute_url}}"><img src="{{MEDIA_URL}}{{object.hero_image}}"></a>
         </div>
