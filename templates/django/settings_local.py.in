@@ -2,6 +2,8 @@
 This is an AUTOMATICALLY GENERATED file.
 !!! DO NOT EDIT MANUALLY !!!
 """
+import os
+ROOT = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = ${project-env:django-debug}
 TEMPLATE_DEBUG = DEBUG
@@ -70,4 +72,12 @@ INSTALLED_APPS = (
     'shop', # The django SHOP application
     'shop.addressmodel', # The default Address and country models
     'coin',
+    'registration',
 )
+
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(ROOT, "tmp", "email")

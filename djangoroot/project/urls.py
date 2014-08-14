@@ -4,8 +4,7 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 
 from shop import urls as shop_urls
-from shop.models.productmodel import Product
-from shop.views.order import ShopListView
+from shop.views.order import OrderListView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -18,6 +17,8 @@ urlpatterns = patterns('',
     (r'^shop/', include(shop_urls)),
 
     (r'^$', TemplateView.as_view(template_name='index.html')),
+    (r'^login/', 'django.contrib.auth.views.login', {'template_name': 'project/login.html'}),
+    (r'^accounts/', include('registration.backends.default.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
