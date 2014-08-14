@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'shop.addressmodel', # The default Address and country models
     'coin',
     'registration',
+    'contact_form',
 )
 
 LOGIN_REDIRECT_URL = '/'

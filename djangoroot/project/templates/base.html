@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load project_extras %}
+
 <html>
 <head>
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -13,14 +15,15 @@
         <li><a href="#" class="graph"></a></li>
         <li><a href="#" class="user"></a></li>
         <li><a href="#" class="mine"></a></li>
-        <li><a href="#" class="contact"></a></li>
+        <li><a href="/contact" class="contact"></a></li>
     </ul>
     <div id="container">
         {% block content %}
         {% endblock %}
     </div>
     <footer>
-        Hi, {{ user }}
+        <p class="user">Hi, {{ user }}</p>
+        <p class="coins">You have {{ user.coins.count|format_number }} Horowitz Coins. <a href="#">Wanna buy some more?</a></p>
     </footer>
 </body>
 </html>

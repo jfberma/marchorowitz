@@ -57,6 +57,22 @@ footer {
     color:#fff;
 }
 
+footer p {
+    margin:0px;
+}
+
+footer p.user {
+    width:200px;
+    float:left;
+}
+
+footer p.coins {
+    width:450px;
+    float:right;
+    text-align: right;
+    margin-right: 24px;
+}
+
 ul.menu {
     list-style-type: none;
     position: fixed;
@@ -143,6 +159,14 @@ label {
     font-size:18px;
 }
 
+ul.errorlist {
+    margin:0 0 5px 0;
+    padding:0px;
+    color:c90000;
+    list-style-type: none;
+}
+
+textarea,
 input[type="text"],
 input[type="password"] {
     width:100%;

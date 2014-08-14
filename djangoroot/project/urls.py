@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     (r'^$', TemplateView.as_view(template_name='index.html')),
     (r'^login/', 'django.contrib.auth.views.login', {'template_name': 'project/login.html'}),
     (r'^accounts/', include('registration.backends.default.urls')),
+    (r'^contact/', include('contact_form.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
