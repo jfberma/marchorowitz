@@ -22,8 +22,12 @@
         {% endblock %}
     </div>
     <footer>
-        <p class="user">Hi, {{ user }}</p>
+        {% if user.is_authenticated %}
+        <p class="user">Hi, {{ user }} <a href="/logout" id="logout">logout</a></p>
         <p class="coins">You have {{ user.coins.count|format_number }} Horowitz Coins. <a href="#">Wanna buy some more?</a></p>
+        {% else %}
+        <p class="user"><a href="/login" id="login">login!</a></p>
+        {% endif %}
     </footer>
 </body>
 </html>

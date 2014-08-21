@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Login <span>or <a href="/register/">create an account</a></span></h1>
+<h1>Login <span>or <a href="/accounts/register/">create an account</a></span></h1>
 {% if form.errors %}
 <p class="text-error">Your username and password didn't match, please try again.</p>
 {% endif %}
@@ -12,9 +12,9 @@
     {{ form.password.label_tag }}
     {{ form.password }}
     <div class="clear"></div>
+    <p><a href="/accounts/password/reset/">Forgot Password?</a></p>
     <input type="submit" value="login" style="margin-top:20px;" />
     <input type="hidden" name="next" value="{{ next }}" />
-
 </form>
 
 {% endblock %}

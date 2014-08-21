@@ -6,16 +6,9 @@ from django.db import models
 from django_extensions.db.fields import UUIDField
 
 
-class CoinManager(models.Manager):
-    def send_coins(self, count, receiver):
-        pass
-
-
 class Coin(models.Model):
     owner = models.ForeignKey(User, related_name="coins")
     uuid = UUIDField(auto_created=True)
-
-    objects = CoinManager()
 
 
 class CoinStat(models.Model):
@@ -35,3 +28,23 @@ class CoinStat(models.Model):
             raise ValidationError('Productivity must have a value between 0 and 100')
         if self.sales < 0 or self.sales > 100:
             raise ValidationError('Sales must have a value between 0 and 100')
+
+
+class Transaction(models.Model):
+    sender = models.ForeignKey(User, related_name="transactions_sent")
+    receiver = models.ForeignKey(User, related_name="transactions_received")
+    amount = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            transfer_coins = self.sender.coins.all()[:self.amount]
+            Coin.objects.filter(pk__in=transfer_coins).update(owner=self.receiver)
+
+        super(Transaction, self).save(*args, **kwargs)
+
+    def clean(self):
+        if self.amount < 1:
+            raise ValidationError('Transfer amount must be greater than 0')
+        if len(self.sender.coins.all()) < self.amount:
+            raise ValidationError('The sender is trying to send more coins than he has.')

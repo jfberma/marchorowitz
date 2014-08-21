@@ -3,6 +3,9 @@ This is an AUTOMATICALLY GENERATED file.
 !!! DO NOT EDIT MANUALLY !!!
 """
 import os
+import sys
+
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = ${project-env:django-debug}
@@ -74,6 +77,7 @@ INSTALLED_APPS = (
     'coin',
     'registration',
     'contact_form',
+    'debug_toolbar',
 )
 
 LOGIN_REDIRECT_URL = '/'
@@ -82,3 +86,14 @@ ACCOUNT_ACTIVATION_DAYS = 7
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(ROOT, "tmp", "email")
+
+SHOP_FORCE_LOGIN = True
+SHOP_SHIPPING_BACKENDS = (
+    'project.shipping.SkipShippingBackend',
+)
+
+SHOP_PAYMENT_BACKENDS = (
+    'project.payment.PayWithCoinsBackend',
+)
+
+SHOP_OWNER_USERNAME = "jeremy"

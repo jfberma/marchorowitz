@@ -6,11 +6,11 @@ echo "getting latest code"
 git pull
 echo "running update scripts"
 #git describe > gitDescribe.txt
-bin/activate
+. bin/activate && make
 bin/buildout
-bin/django syncdb
-bin/django migrate
+bin/django syncdb --noinput
+bin/django migrate --noinput
 #bin/django check_permissions
-bin/django_static collectstatic -c -l --noinput
+bin/django collectstatic -c -l --noinput
 echo "starting servers"
 bin/supervisorctl start all

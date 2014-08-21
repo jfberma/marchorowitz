@@ -66,6 +66,8 @@ footer p.user {
     float:left;
 }
 
+footer p.user a#logout {}
+
 footer p.coins {
     width:450px;
     float:right;
@@ -202,10 +204,54 @@ input[type="color"]:focus,
     background: rgba(255, 255, 255, 0.3);
 }
 
+a.button,
 input[type="submit"] {
     font-family: 'Arvo', serif;
     font-size: 18px;
     padding:5px 20px;
     background:rgb(61, 163, 153);
     border:none;
+}
+
+a.button {
+    color:#000;
+}
+
+a.button:hover {
+    color:#000;
+    text-decoration: none;
+}
+
+table.cart {
+    width:100%;
+    border:none;
+}
+
+table.cart th {
+    text-align: left;
+    border: none;
+    border-bottom:2px solid rgba(255, 255, 255, 0.8);
+    padding-bottom: 4px;
+}
+
+table.cart td {
+    border: none;
+    border-bottom:2px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 0;
+}
+
+input.empty {
+    background:none;
+    font-size: 12px;
+    padding:0px;
+    margin-top: 20px;
+    color:#c90000;
+}
+
+#id_shipping_method {
+    display:none;
+}
+
+label[for="id_shipping_method"] {
+    display: none;
 }

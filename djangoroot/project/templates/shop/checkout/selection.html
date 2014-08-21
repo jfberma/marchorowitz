@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>Shipping</h1>
+<form method="POST">
+{% csrf_token %}
+<h3>Your shipping address</h3>
+{{ shipping_address.as_p }}
+<input id="id_bill-name" maxlength="255" name="bill-name" type="hidden" value="none" />
+<input id="id_bill-address" maxlength="255" name="bill-address" type="hidden" value="none" />
+<input id="id_bill-address2" maxlength="255" name="bill-address2" type="hidden" />
+<input id="id_bill-zip_code" maxlength="20" name="bill-zip_code" type="hidden" value="12345" />
+<input id="id_bill-city" maxlength="20" name="bill-city" type="hidden" value="Los Angeles" />
+<input id="id_bill-state" maxlength="255" name="bill-state" type="hidden" value="California" />
+<input id="id_bill-country" type="hidden" name="bill-country">
+<h3>Payment</h3>
+{{ billing_shipping_form.as_p }}
+<h3>Extra info</h3>
+{{ extra_info_form.as_p }}
+<button type="submit">Save</button>
+</form>
+{% endblock %}
