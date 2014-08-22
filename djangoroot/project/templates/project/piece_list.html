@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+{% for piece in pieces %}
+    <div class="item">
+        <p class="title">{{piece.name}} - <span>h{{piece.unit_price}}</span> - {% if piece.sold %}<a>SOLD!</a>{% else %}<a href="">buy</a>{% endif %}</p>
+        <a href="{{piece.get_absolute_url}}"><img src="{{MEDIA_URL}}{{piece.hero_image}}"></a>
+    </div>
+{% endfor %}
+{% endblock %}

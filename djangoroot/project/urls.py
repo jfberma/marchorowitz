@@ -3,17 +3,13 @@ from django.conf.urls import *
 from django.conf import settings
 from django.views.generic.base import TemplateView
 from project import views
-from project.views import TestView
+from project.views import PieceListView
 
 from shop import urls as shop_urls
+from shop.views import ShopListView
 from shop.views.order import OrderListView
 
 import logging
-logger = logging.getLogger(__name__)
-
-logger.error("test1")
-logger.debug("test2")
-print("test3")
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -24,6 +20,7 @@ urlpatterns = patterns('',
     # (r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
 
     (r'^shop/', include(shop_urls)),
+    (r'^pieces/(?P<category_name>[\+\w\.@-_]+)/', PieceListView.as_view()),
 
     (r'^$', TemplateView.as_view(template_name='index.html')),
     (r'^login/', 'django.contrib.auth.views.login', {'template_name': 'project/login.html'}),
@@ -38,9 +35,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
     url(r'^hook/', include('github_hook.urls')),
-
-    #url(r'^test/', TestView.as_view()),
-    url(r'^test/', views.test, name='test'),
 )
 
 if settings.DEBUG:

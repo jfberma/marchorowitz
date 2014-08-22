@@ -8,14 +8,16 @@
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/project.css' %}">
 
 </head>
-<body>
+<body class="body-{{ view_id }}">
     <ul class="menu">
-        <li>1</li>
-        <li>2</li>
+        <!-- product categories -->
+        <li><a href="/pieces/blue/" class="blue{% if view_id == 'pieces-blue' %} on{% endif %}"></a></li>
+        <li><a href="/pieces/grey/" class="grey{% if view_id == 'pieces-grey' %} on{% endif %}"></a></li>
+        <!------------------------>
         <li><a href="#" class="graph"></a></li>
         <li><a href="#" class="user"></a></li>
         <li><a href="#" class="mine"></a></li>
-        <li><a href="/contact" class="contact"></a></li>
+        <li><a href="/contact" class="contact {% if view_id == 'contact' %} on{% endif %}"></a></li>
     </ul>
     <div id="container">
         {% block content %}

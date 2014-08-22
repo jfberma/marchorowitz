@@ -1,22 +1,13 @@
-from django.http import HttpResponse
-from django.template import loader, RequestContext
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+from project.models import Piece, PieceCategory
+
 import logging
-
-
 logger = logging.getLogger(__name__)
 
 
-class TestView(TemplateView):
-    print("Cdascdascdsa")
-    logger.debug("log?")
-    template_name = "test.html"
+class PieceListView(ListView):
+    context_object_name = "pieces"
 
-def test(request):
-    print("cdascdas")
-    logger.debug("test")
-    template = loader.get_template('test.html')
-    context = RequestContext(request, {
-        'latest_question_list': "cdscdsa",
-    })
-    return HttpResponse(template.render(context))
+    def get_queryset(self):
+        category = PieceCategory.objects.filter(name=self.kwargs['category_name'])
+        return Piece.objects.filter(category=category)
