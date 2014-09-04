@@ -3,6 +3,8 @@
 
 <html>
 <head>
+    <script src="{% static 'project/js/three.min.js' %}"></script>
+
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/project.css' %}">
@@ -23,6 +25,51 @@
         {% block content %}
         {% endblock %}
     </div>
+    <script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera(75, 300/300, 0.1, 1000);
+
+			var renderer = new THREE.WebGLRenderer({ alpha: true });
+			renderer.setSize(300, 300);
+			document.body.appendChild(renderer.domElement);
+
+			/*var geometry = new THREE.BoxGeometry(1,1,1);
+			var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+			var cube = new THREE.Mesh(geometry, material);
+			scene.add(cube);*/
+
+            loader = new THREE.JSONLoader();
+
+            var mesh;
+            loader.load( "{% static 'project/js/coin.js' %}", function( geometry ) {
+                mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
+                mesh.rotation.z = 0 * Math.PI / 180
+                mesh.rotation.x = 90 * Math.PI / 180
+                scene.add(mesh);
+            } );
+
+            var ambientLight = new THREE.AmbientLight(0xC0C0C0);
+            scene.add(ambientLight);
+
+            var directionalLight = new THREE.DirectionalLight(0xffffff);
+            directionalLight.position.set(1, 1, 1).normalize();
+            scene.add(directionalLight);
+
+
+			camera.position.z = 3;
+
+			var render = function () {
+				requestAnimationFrame(render);
+
+                if (mesh) {
+                    mesh.rotation.z += 0.02;
+                }
+
+				renderer.render(scene, camera);
+			};
+
+			render();
+		</script>
     <footer>
         {% if user.is_authenticated %}
         <p class="user">Hi, {{ user }} <a href="/logout" id="logout">logout</a></p>

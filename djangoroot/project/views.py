@@ -9,5 +9,8 @@ class PieceListView(ListView):
     context_object_name = "pieces"
 
     def get_queryset(self):
-        category = PieceCategory.objects.filter(name=self.kwargs['category_name'])
+        try:
+            category = PieceCategory.objects.filter(name=self.kwargs['category_name'])
+        except KeyError:
+            category = PieceCategory.objects.filter(name='blue')
         return Piece.objects.filter(category=category)

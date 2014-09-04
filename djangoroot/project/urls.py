@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     (r'^shop/', include(shop_urls)),
     (r'^pieces/(?P<category_name>[\+\w\.@-_]+)/', PieceListView.as_view()),
 
-    (r'^$', TemplateView.as_view(template_name='index.html')),
+    (r'^$', PieceListView.as_view()),
     (r'^login/', 'django.contrib.auth.views.login', {'template_name': 'project/login.html'}),
     (r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     (r'^accounts/', include('registration.backends.default.urls')),
