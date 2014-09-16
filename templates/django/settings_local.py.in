@@ -80,6 +80,8 @@ INSTALLED_APPS = (
     'debug_toolbar',
 )
 
+GOOGLECHARTS_PACKAGES = ["corechart"]
+
 LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_ACTIVATION_DAYS = 7

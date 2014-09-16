@@ -11,5 +11,10 @@ class CoinAdmin(admin.ModelAdmin):
     list_editable = ('owner',)
 admin.site.register(Coin, CoinAdmin)
 
-admin.site.register(CoinStat)
+
+class CoinStatAdmin(admin.ModelAdmin):
+    list_display = ('value',)
+admin.site.register(CoinStat, CoinStatAdmin)
+
+
 admin.site.register(Transaction)

@@ -3,7 +3,7 @@ from django.conf.urls import *
 from django.conf import settings
 from django.views.generic.base import TemplateView
 from project import views
-from project.views import PieceListView
+from project.views import PieceListView, AboutView, AccountView
 
 from shop import urls as shop_urls
 from shop.views import ShopListView
@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     (r'^pieces/(?P<category_name>[\+\w\.@-_]+)/', PieceListView.as_view()),
 
     (r'^$', PieceListView.as_view()),
+    (r'^about/', AboutView.as_view()),
+    (r'^account/', AccountView.as_view()),
     (r'^login/', 'django.contrib.auth.views.login', {'template_name': 'project/login.html'}),
     (r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     (r'^accounts/', include('registration.backends.default.urls')),
