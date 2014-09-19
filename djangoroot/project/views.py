@@ -20,6 +20,12 @@ class PieceListView(ListView):
 class AboutView(TemplateView):
     template_name = "project/about.html"
 
+    def get_context_data(self, **kwargs):
+        coin_stats = CoinStat.objects.all()
+        context = super(AboutView, self).get_context_data(**kwargs)
+        context['coin_stats'] = coin_stats;
+        return context
+
 
 class AccountView(TemplateView):
     template_name = "project/account.html"
