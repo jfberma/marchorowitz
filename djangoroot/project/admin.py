@@ -5,7 +5,7 @@ from models import Piece
 
 
 class PieceCategoryAdmin(admin.ModelAdmin):
-    fields = ('name', 'color')
+    fields = ('name', 'color', 'background_gradient_top', 'background_gradient_bottom')
     list_display = ('name',)
 admin.site.register(PieceCategory, PieceCategoryAdmin)
 

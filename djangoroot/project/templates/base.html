@@ -10,11 +10,22 @@
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/project.css' %}">
 
 </head>
-<body class="body-{{ view_id }}">
+<body class="body-{{ view_id }}" {% for category in categories %}
+{% if view_id == 'pieces-'|add:category.name  %}
+style="background: {{ category.color }}; /* Old browsers */
+    background: -moz-linear-gradient(top,  {{ category.background_gradient_top }} 0%, {{ category.background_gradient_bottom }} 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,{{ category.background_gradient_top }}), color-stop(100%,{{ category.background_gradient_bottom }})); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  {{ category.background_gradient_top }} 0%,{{ category.background_gradient_bottom }} 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  {{ category.background_gradient_top }} 0%,{{ category.background_gradient_bottom }} 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  {{ category.background_gradient_top }} 0%,{{ category.background_gradient_bottom }} 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  {{ category.background_gradient_top }} 0%,{{ category.background_gradient_bottom }} 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ category.background_gradient_top }}', endColorstr='{{ category.background_gradient_bottom }}',GradientType=0 ); /* IE6-9 */"
+{% endif %}{% endfor %}>
     <ul class="menu">
         <!-- product categories -->
-        <li><a href="/pieces/blue/" class="blue{% if view_id == 'pieces-blue' %} on{% endif %}"></a></li>
-        <li><a href="/pieces/grey/" class="grey{% if view_id == 'pieces-grey' %} on{% endif %}"></a></li>
+        {% for category in categories %}
+        <li class="category"><a href="/pieces/{{ category.name }}" style="background-color:{{ category.color }};" {% if view_id == 'pieces-'|add:category.name  %}class="on"{% endif %}></a></li>
+        {% endfor %}
         <!------------------------>
         <li><a href="/about" class="graph"></a></li>
         <li><a href="/account" class="user"></a></li>

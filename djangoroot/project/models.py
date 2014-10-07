@@ -5,6 +5,8 @@ from django.db import models
 class PieceCategory(models.Model):
     name = models.CharField(max_length=255)
     color = models.CharField(max_length=7, verbose_name='Hex Color Value (eg. #ff0000)')
+    background_gradient_top = models.CharField(max_length=7, default='#0097d0', verbose_name='Hex Color Value For Top of Background Gradient')
+    background_gradient_bottom = models.CharField(max_length=7, default='#ffc300', verbose_name='Hex Color Value For Bottom of Background Gradient')
 
     def __unicode__(self):
         return u'%s' % (self.name)

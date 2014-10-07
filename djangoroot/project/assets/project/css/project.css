@@ -11,28 +11,6 @@ body {
     background-repeat: no-repeat;
 }
 
-body.body-pieces-blue, body.body-index {
-    background: #4267a7; /* Old browsers */
-    background: -moz-linear-gradient(top,  #4267a7 0%, #3c607c 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4267a7), color-stop(100%,#3c607c)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #4267a7 0%,#3c607c 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #4267a7 0%,#3c607c 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #4267a7 0%,#3c607c 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #4267a7 0%,#3c607c 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4267a7', endColorstr='#3c607c',GradientType=0 ); /* IE6-9 */
-}
-
-body.body-pieces-grey {
-    background: #93949c; /* Old browsers */
-    background: -moz-linear-gradient(top,  #93949c 0%, #484f55 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#93949c), color-stop(100%,#484f55)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #93949c 0%,#484f55 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #93949c 0%,#484f55 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #93949c 0%,#484f55 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #93949c 0%,#484f55 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93949c', endColorstr='#484f55',GradientType=0 ); /* IE6-9 */
-}
-
 .clear {
     clear: both;
 }
@@ -113,6 +91,10 @@ ul.menu li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+ul.menu li.category {
+    background-color: #fff;
+}
+
 ul.menu li:last-child {
     border-bottom:none;
 }
@@ -138,20 +120,8 @@ ul.menu li a:hover {
     background-color:#ffc500 !important;
 }
 
-ul.menu li a.blue {
-    background:#428bca;
-}
-
-ul.menu li a.blue:hover {
-    background:#3FA3FA !important;
-}
-
-ul.menu li a.grey {
-    background:#999;
-}
-
-ul.menu li a.grey:hover {
-    background:#ddd !important;
+ul.menu li a.on {
+    opacity: 0.3;
 }
 
 a.graph {
