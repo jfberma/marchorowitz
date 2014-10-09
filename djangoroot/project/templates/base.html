@@ -3,7 +3,10 @@
 
 <html>
 <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{% static 'project/js/jquery.cookie.js' %}"></script>
     <script src="{% static 'project/js/three.min.js' %}"></script>
+    <script src="{% static 'project/js/mineSnake.js' %}"></script>
 
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}">
@@ -29,8 +32,9 @@ style="background: {{ category.color }}; /* Old browsers */
         <!------------------------>
         <li><a href="/about" class="graph"></a></li>
         <li><a href="/account" class="user"></a></li>
-        <li><a href="#" class="mine"></a></li>
+        <li><a href="javascript:window.startSnake()" class="mine"></a></li>
         <li><a href="/contact" class="contact {% if view_id == 'contact' %} on{% endif %}"></a></li>
+        <li><a href="/shop/cart" class="cart"></a></li>
     </ul>
     <div id="container">
         {% block content %}

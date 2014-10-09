@@ -156,6 +156,14 @@ a.contact:hover {
     background-image: url('../img/icons/white/quill.png')!important;
 }
 
+a.cart {
+    background-image: url('../img/icons/black/cart.png')!important;
+}
+
+a.cart:hover {
+    background-image: url('../img/icons/white/cart.png')!important;
+}
+
 h1 {}
 h1 span {
     font-size:18px;
@@ -266,6 +274,45 @@ label[for="id_shipping_method"] {
 
 canvas {
     position:fixed;
-    bottom:0px;
+    bottom:20px;
     right:0px;
+}
+
+div#mining_info_container {
+    position: fixed;
+    width: 300px;
+    height:80px;
+    bottom:20px;
+    right:0px;
+    text-align: center;
+}
+
+div#mining_info_container p#score {
+    font-size:16px;
+    color:#c90000;
+    margin:6px 0 0 0;
+
+}
+
+div#mining_info_container p#instructions {
+    font-size:11px;
+    color:#999;
+}
+
+div#mining_info_container p#rate {
+    font-size:12px;
+    margin:0px;
+}
+
+div#plus_one {
+    position: fixed;
+    width: 300px;
+    height:40px;
+    bottom:230px;
+    right:0px;
+    font-size: 42px;
+    font-weight: bold;
+    color:#fff;
+    text-shadow: 0 0 5px #fff;
+    text-align: center;
 }

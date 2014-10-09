@@ -46,5 +46,10 @@ class Transaction(models.Model):
     def clean(self):
         if self.amount < 1:
             raise ValidationError('Transfer amount must be greater than 0')
-        if len(self.sender.coins.all()) < self.amount:
+        if self.sender.coins.count() < self.amount:
             raise ValidationError('The sender is trying to send more coins than he has.')
+
+
+class FractionalCoin(models.Model):
+    user = models.ForeignKey(User, related_name="factional_coins")
+    amount = models.IntegerField()

@@ -17,4 +17,6 @@ class CoinStatAdmin(admin.ModelAdmin):
 admin.site.register(CoinStat, CoinStatAdmin)
 
 
-admin.site.register(Transaction)
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ('created', 'sender', 'receiver', 'amount',)
+admin.site.register(Transaction, TransactionAdmin)
