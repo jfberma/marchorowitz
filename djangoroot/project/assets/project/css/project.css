@@ -278,6 +278,12 @@ canvas {
     right:0px;
 }
 
+canvas#chart,
+canvas#chart2 {
+    position:relative;
+    margin-top:40px;
+}
+
 div#mining_info_container {
     position: fixed;
     width: 300px;
@@ -315,4 +321,27 @@ div#plus_one {
     color:#fff;
     text-shadow: 0 0 5px #fff;
     text-align: center;
+}
+
+table#order_history {
+    width:100%;
+    text-align:left;
+}
+
+table#order_history tr {
+    border-bottom:1px solid #333;
+}
+
+table#order_history th.date {
+    width:35%;
+}
+
+table#order_history th.product,
+table#order_history td.product {
+    padding-left: 10px;
+    width:30%;
+}
+
+table#order_history td {
+    padding:10px 0;
 }
