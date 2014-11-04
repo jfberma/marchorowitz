@@ -7,10 +7,14 @@
     <script src="{% static 'project/js/jquery.cookie.js' %}"></script>
     <script src="{% static 'project/js/three.min.js' %}"></script>
     <script src="{% static 'project/js/mineSnake.js' %}"></script>
+    <script src="{% static 'project/js/sweet-alert.min.js' %}"></script>
+    <script src="{% static 'project/js/site.js' %}"></script>
 
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/project.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'project/css/sweet-alert.css' %}">
+    {% block extra_includes %}{% endblock %}
 
 </head>
 <body class="body-{{ view_id }}" {% for category in categories %}
@@ -32,7 +36,7 @@ style="background: {{ category.color }}; /* Old browsers */
         <!------------------------>
         <li><a href="/about" class="graph"></a></li>
         <li><a href="/account" class="user"></a></li>
-        <li><a href="javascript:window.startSnake()" class="mine"></a></li>
+        <li><a href="{% if user.is_authenticated %}javascript:window.startSnake(){% else %}#{% endif %}" {% if user.is_authenticated == False %}onClick="loginRequired('You must login to mine!')"{% endif %} class="mine"></a></li>
         <li><a href="/contact" class="contact {% if view_id == 'contact' %} on{% endif %}"></a></li>
         <li><a href="/shop/cart" class="cart"></a></li>
     </ul>
@@ -88,7 +92,7 @@ style="background: {{ category.color }}; /* Old browsers */
     <footer>
         {% if user.is_authenticated %}
         <p class="user">Hi, {{ user }} <a href="/logout" id="logout">logout</a></p>
-        <p class="coins">You have {{ user.coins.count|format_number }} Horowitz Coins. <a href="#">Wanna buy some more?</a></p>
+        <p class="coins">You have <span id="coin_count">{{ user.coins.count|format_number }}</span> Horowitz Coins. <a href="#">Wanna buy some more?</a></p>
         {% else %}
         <p class="user"><a href="/login" id="login">login!</a></p>
         {% endif %}
