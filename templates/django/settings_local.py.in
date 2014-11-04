@@ -78,6 +78,7 @@ INSTALLED_APPS = (
     'registration',
     'contact_form',
     'debug_toolbar',
+    'simplejson',
 )
 
 GOOGLECHARTS_PACKAGES = ["corechart"]
