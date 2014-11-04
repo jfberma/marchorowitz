@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.views.generic.base import View
-from coin.models import Transaction
+from coin.models import Transaction, CoinSettings
 from coin.models import Coin
 
 
@@ -17,6 +17,7 @@ class MiningView(View):
             return HttpResponse(json.dumps(response_data), content_type="application/json")
 
         response_data['points'] = request.session.get('points', 0)
+        response_data['ppc'] = CoinSettings.objects.get(pk=1).points_per_coin
         return HttpResponse(json.dumps(response_data), content_type="application/json")
 
     def post(self, request):
@@ -30,7 +31,7 @@ class MiningView(View):
         request.session['points'] = points
         response_data['points'] = points
         response_data['success'] = 'Good job!'
-        if points % 100 == 9:
+        if points % CoinSettings.objects.get(pk=1).points_per_coin == 0:
             transaction = Transaction()
             transaction.sender = User.objects.get(username=settings.SHOP_OWNER_USERNAME)
             transaction.receiver = request.user

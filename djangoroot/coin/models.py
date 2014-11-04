@@ -11,15 +11,23 @@ class Coin(models.Model):
     uuid = UUIDField(auto_created=True)
 
 
+class CoinSettings(models.Model):
+    mood_weight = models.DecimalField(decimal_places=2, max_digits=100, default=0.02)
+    productivity_weight = models.DecimalField(decimal_places=2, max_digits=100, default=0.02)
+    sales_weight = models.DecimalField(decimal_places=2, max_digits=100, default=0.02)
+    points_per_coin = models.IntegerField(default=100)
+
+    class Meta:
+        verbose_name = "Coin Settings"
+        verbose_name_plural = "Coin Settings"
+
+
 class CoinStat(models.Model):
-    value = models.DecimalField(decimal_places=2, max_digits=1000)
+    value = models.DecimalField(decimal_places=2, max_digits=1000, editable=False)
     mood = models.IntegerField()
     productivity = models.IntegerField()
     sales = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
-
-    def save(self, *args, **kwargs):
-        super(CoinStat, self).save()
 
     def clean(self):
         if self.mood < 0 or self.mood > 100:
