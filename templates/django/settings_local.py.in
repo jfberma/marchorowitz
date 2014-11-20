@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'contact_form',
     'debug_toolbar',
     'simplejson',
+    'payments'
 )
 
 GOOGLECHARTS_PACKAGES = ["corechart"]
@@ -100,3 +101,12 @@ SHOP_PAYMENT_BACKENDS = (
 )
 
 SHOP_OWNER_USERNAME = "jeremy"
+
+STRIPE_SECRET_KEY = os.environ.get(
+    "STRIPE_SECRET_KEY",
+    "${project-env:stripe-key-private}"
+)
+STRIPE_PUBLIC_KEY = os.environ.get(
+    "STRIPE_PUBLIC_KEY",
+    "${project-env:stripe-key-public}"
+)
