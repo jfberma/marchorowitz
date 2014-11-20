@@ -186,7 +186,8 @@ ul.errorlist {
 
 textarea,
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
     width:100%;
     border:2px solid rgba(255, 255, 255, 0.8);
     background:none;
