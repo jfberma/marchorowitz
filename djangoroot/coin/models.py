@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
@@ -50,6 +51,12 @@ class Transaction(models.Model):
             Coin.objects.filter(pk__in=transfer_coins).update(owner=self.receiver)
 
         super(Transaction, self).save(*args, **kwargs)
+
+    def buy_coins(self, user, amount):
+        self.sender = User.objects.get(username=settings.SHOP_OWNER_USERNAME)
+        self.receiver = user
+        self.amount = amount
+        self.save()
 
     def clean(self):
         if self.amount < 1:

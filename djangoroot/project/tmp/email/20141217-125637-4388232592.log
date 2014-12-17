@@ -1,0 +1,36 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: [example.com] Payment Receipt (Invoice #48)
+From: billing@example.com
+To: jeremy.f.berman@gmail.com
+Date: Wed, 17 Dec 2014 18:56:37 -0000
+Message-ID: <20141217185637.8974.47945@JeremyRetina.local>
+
+Your example.com account was successfully charged $26.29 to the credit card ending in 4242. The invoice below is for your records.
+
+
+========================================================
+INVOICE #48     December 17, 2014
+........................................................
+
+
+CUSTOMER: jeremy
+
+
+DETAILS
+-------
+ - $26.29
+
+TOTAL: $26.29 USD
+PAID BY CREDIT CARD: -$26.29
+========================================================
+
+
+Please contact us with any questions regarding this invoice.
+
+---
+Your example.com Team
+http://example.com
+
+-------------------------------------------------------------------------------

@@ -3,7 +3,7 @@ from django.conf.urls import *
 from django.conf import settings
 from django.views.generic.base import TemplateView
 from project import views
-from project.views import PieceListView, AboutView, AccountView
+from project.views import PieceListView, AboutView, AccountView, ChargeView
 
 from shop import urls as shop_urls
 from shop.views import ShopListView
@@ -38,6 +38,8 @@ urlpatterns = patterns('',
 
     (r'^coin/', include('coin.urls')),
     url(r'^hook/', include('github_hook.urls')),
+
+    (r'^charge', ChargeView.as_view()),
 )
 
 if settings.DEBUG:

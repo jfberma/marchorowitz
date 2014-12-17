@@ -35,6 +35,13 @@ body {
     margin: 0 0 5px 0;
     padding: 0px;
     text-align: right;
+    float: right;
+}
+
+a.sold {
+    float: right;
+    margin-left: 10px;
+    color:#c90000;
 }
 
 .item p.title span {
@@ -53,12 +60,13 @@ footer {
     bottom: 0px;
     left: 0px;
     width:100%;
-    padding: 5px 10px;
+    padding: 10px 10px;
     color:#fff;
 }
 
 footer p {
     margin:0px;
+    height: 22px;
 }
 
 footer p.user {
@@ -73,6 +81,59 @@ footer p.coins {
     float:right;
     text-align: right;
     margin-right: 24px;
+}
+
+footer div#buy_coins_form {
+    float: right;
+    display:none;
+}
+
+footer div#buy_coins_form input[type="text"],
+footer div#buy_coins_form input[type="number"] {
+    background:#fff;
+    width:120px;
+    border:1px solid #000;
+    margin:0 10px;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+    border-radius:0px;
+    font-family: 'Arvo', serif;
+}
+
+footer div#buy_coins_form button {
+    padding: 1px 5px;
+    margin: 0 10px 0 0;
+    font-family: 'Arvo', serif;
+    border:none;
+    background: #0397CC;
+    color: #fff;
+}
+
+footer div#buy_coins_form a {
+    margin: 0 20px 0 0;
+}
+
+
+div.buy_coins_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: rgba(0,0,0,0.4);
+}
+
+div.buy_coins_content {
+    width:400px;
+    height:400px;
+    background:#fff;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin:0px auto;
+    -webkit-box-shadow: 0 0 5px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px 4px rgba(0,0,0,0.2);
 }
 
 ul.menu {
@@ -230,6 +291,15 @@ input[type="submit"] {
     border:none;
 }
 
+input[type="submit"].list {
+    margin-top:-5px;
+    margin-left: 10px;
+}
+
+form.add-to-cart {
+    float:right;
+}
+
 a.button {
     color:#000;
 }
@@ -275,7 +345,7 @@ label[for="id_shipping_method"] {
 
 canvas {
     position:fixed;
-    bottom:20px;
+    bottom:30px;
     right:0px;
 }
 
@@ -289,7 +359,7 @@ div#mining_info_container {
     position: fixed;
     width: 300px;
     height:80px;
-    bottom:20px;
+    bottom:30px;
     right:0px;
     text-align: center;
 }
@@ -306,7 +376,7 @@ div#mining_info_container p#instructions {
     color:#999;
 }
 
-div#mining_info_container p#rate {
+div#mining_info_container p#mining-rate {
     font-size:12px;
     margin:0px;
 }
@@ -315,7 +385,7 @@ div#plus_one {
     position: fixed;
     width: 300px;
     height:40px;
-    bottom:230px;
+    bottom:240px;
     right:0px;
     font-size: 42px;
     font-weight: bold;

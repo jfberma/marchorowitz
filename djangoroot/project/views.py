@@ -1,5 +1,10 @@
+import json
+
 from coin.models import CoinStat
-from django.views.generic import ListView, TemplateView
+from decimal import Decimal
+from django.http import HttpResponse
+from django.views.generic import ListView, TemplateView, View
+from payments.models import Customer
 from project.models import Piece, PieceCategory
 from shop.models import Order
 
@@ -32,7 +37,27 @@ class AccountView(TemplateView):
     template_name = "project/account.html"
 
     def get_context_data(self, **kwargs):
-        orders = Order.objects.filter(user=self.request.user)
         context = super(AccountView, self).get_context_data(**kwargs)
-        context['orders'] = orders
+        if self.request.user.is_authenticated():
+            orders = Order.objects.filter(user=self.request.user)
+            context['orders'] = orders
         return context
+
+
+class ChargeView(View):
+
+    def post(self, request, *args, **kwargs):
+        try:
+            customer = Customer.objects.get(user=request.user)
+        except Customer.DoesNotExist:
+            customer = Customer.create(user=request.user, card=request.POST.get('stripeToken'))
+
+        if customer.can_charge():
+            customer.charge(Decimal(request.POST.get('amount')))
+
+        response = {
+            'status': 'success',
+            'coins': request.user.coins.count()
+        }
+
+        return HttpResponse(json.dumps(response), mimetype='application/json')

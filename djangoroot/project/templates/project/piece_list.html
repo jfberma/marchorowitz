@@ -2,8 +2,19 @@
 {% block content %}
 {% for piece in pieces %}
     <div class="item">
-        <p class="title">{{piece.name}} - <span>h{{piece.unit_price}}</span> - {% if piece.sold %}<a>SOLD!</a>{% else %}<a href="">buy</a>{% endif %}</p>
-        <a href="{{piece.get_absolute_url}}"><img src="{{MEDIA_URL}}{{piece.hero_image}}"></a>
+        {% if piece.sold %}
+        <a class="sold">SOLD!</a>
+        {% else %}
+        <!--<a href="" onlick="">buy</a>-->
+        <form method="post" action="{% url 'cart' %}" class="add-to-cart">{% csrf_token %}
+            <input type="hidden" name="add_item_id" value="{{piece.pk}}">
+            <input type="hidden" name="add_item_quantity" value="1">
+            <input type="submit" value="Add to cart" class="list">
+        </form>
+        {% endif %}
+        <p class="title">{{piece.name}} - <span>h{{piece.unit_price}}</span> - </p>
+
+        <img src="{{MEDIA_URL}}{{piece.hero_image}}">
     </div>
 {% endfor %}
 {% endblock %}

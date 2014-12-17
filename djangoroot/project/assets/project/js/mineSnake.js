@@ -36,7 +36,7 @@
 
         function init() {
             $("#mining_info_container").remove();
-            $('body').append('<div id="mining_info_container"><p id="score"></p><p id="rate">points gets you a coin!</p><p id="instructions">(press ESC to stop mining)</p></div>')
+            $('body').append('<div id="mining_info_container"><p id="score"></p><p id="mining-rate">points gets you a coin!</p><p id="instructions">(press ESC to stop mining)</p></div>')
 
             d = "right"; //default direction
             create_snake();
@@ -55,7 +55,7 @@
             $.get('/coin/award-point/')
                 .done(function(data) {
                     score = data.points;
-                    $("#rate").prepend(data.ppc + " ");
+                    $("#mining-rate").prepend(data.ppc + " ");
                 });
 
             //Lets add the keyboard controls now

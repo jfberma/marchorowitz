@@ -1,3 +1,4 @@
+from coin.models import CoinStat
 from project.models import PieceCategory
 
 
@@ -10,3 +11,8 @@ def view_id(request):
 def categories(request):
     categories_list = PieceCategory.objects.all()
     return {'categories': categories_list}
+
+
+def coin_stats(request):
+    latest_stat = CoinStat.objects.latest('created')
+    return {'coin_info': latest_stat}

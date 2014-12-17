@@ -148,10 +148,24 @@
         datasetStrokeWidth : 2,
 
         //Boolean - Whether to fill the dataset with a colour
-        datasetFill : true,
+        datasetFill : true
     }
 
     var chart2 = new Chart(ctx2 ).Radar(data, options);
 </script>
+
+
+<!--<script src="//checkout.stripe.com/v2/checkout.js"></script>-->
+<!--<form action="/charge" method="POST">-->
+    <!--{% csrf_token %}-->
+    <!--<script-->
+        <!--src="https://checkout.stripe.com/checkout.js" class="stripe-button"-->
+        <!--data-key="pk_test_jDIonFZQOmHJr2PnVBUV6Dmz"-->
+        <!--data-image="/square-image.png"-->
+        <!--data-name="Demo Site"-->
+        <!--data-description="2 widgets ($20.00)"-->
+        <!--data-amount="2000">-->
+    <!--</script>-->
+<!--</form>-->
 
 {% endblock %}

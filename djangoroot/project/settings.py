@@ -164,6 +164,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     "project.processor.view_id",
     "project.processor.categories",
+    "project.processor.coin_stats",
+    "payments.context_processors.payments_settings",
 )
 
 #

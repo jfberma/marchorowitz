@@ -9,6 +9,7 @@
     <script src="{% static 'project/js/mineSnake.js' %}"></script>
     <script src="{% static 'project/js/sweet-alert.min.js' %}"></script>
     <script src="{% static 'project/js/site.js' %}"></script>
+    <script src="{% static 'project/js/jquery.peelback.js' %}"></script>
 
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}">
@@ -91,11 +92,21 @@ style="background: {{ category.color }}; /* Old browsers */
 		</script>
     <footer>
         {% if user.is_authenticated %}
+        <div id="buy_coins_form">
+            Current Rate: 1h = $<span id="rate">{{ coin_info.value }}</span>
+            <input type="number" placeholder="How many coins?" id="coins-to-buy">
+            <button id="start-buy">Buy!</button>
+            <a id="cancel-buy">cancel</a>
+        </div>
         <p class="user">Hi, {{ user }} <a href="/logout" id="logout">logout</a></p>
-        <p class="coins">You have <span id="coin_count">{{ user.coins.count|format_number }}</span> Horowitz Coins. <a href="#">Wanna buy some more?</a></p>
+        <p class="coins">You have <span id="coin_count">{{ user.coins.count|format_number }}</span> Horowitz Coins. <a href="#" id="buy_coins">Wanna buy some more?</a></p>
+
         {% else %}
         <p class="user"><a href="/login" id="login">login!</a></p>
         {% endif %}
     </footer>
+    {% if user.is_authenticated %}
+    <script src="//checkout.stripe.com/v2/checkout.js"></script>
+    {% endif %}
 </body>
 </html>
