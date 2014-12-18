@@ -1,3 +1,4 @@
 Please activate your account:
 
 {{ site }}
+{{ activation_key }}
