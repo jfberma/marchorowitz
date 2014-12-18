@@ -1,4 +1,3 @@
-Please activate your account:
+Click the link below to activate your account:
 
-{{ site }}
-{{ activation_key }}
+http://{{site}}/accounts/activate/{{ activation_key }}/
