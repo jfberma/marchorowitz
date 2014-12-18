@@ -152,10 +152,6 @@ ul.menu li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-ul.menu li.category {
-    background-color: #fff;
-}
-
 ul.menu li:last-child {
     border-bottom:none;
 }
