@@ -99,7 +99,6 @@ style="background: {{ category.color }}; /* Old browsers */
             <a id="cancel-buy">cancel</a>
         </div>
         <p class="user">Hi, {{ user }} <a href="/logout" id="logout">logout</a></p>
-       {{ user.coins}}
         <p class="coins">You have <span id="coin_count">{{ user.coins.count|format_number }}</span> Horowitz Coins. <a href="#" id="buy_coins">Wanna buy some more?</a></p>
 
         {% else %}
