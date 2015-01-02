@@ -29,10 +29,10 @@
         var user_text = "";
         var coins_per_bite = 1;
 
-        $(document).on("keydown", function(e) {
-            if (e.which == 83) init();
-            return true;
-        });
+//        $(document).on("keydown", function(e) {
+//            if (e.which == 83) init();
+//            return true;
+//        });
 
         function init() {
             $("#mining_info_container").remove();

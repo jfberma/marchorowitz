@@ -9,6 +9,7 @@ body {
     background-image: -ms-linear-gradient(top, #0097d0 0%, #ffc300 95%, #ffc300 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0097d0 ', endColorstr='#ffc300');
     background-repeat: no-repeat;
+    text-transform: lowercase;
 }
 
 .clear {
@@ -27,7 +28,7 @@ body {
 }
 
 .item img {
-    margin: 0px;
+    margin: 25px 0 10px 0;
 }
 
 .item p.title {
@@ -221,13 +222,28 @@ a.cart:hover {
     background-image: url('../img/icons/white/cart.png')!important;
 }
 
-h1 {}
+h1 {
+    margin-top: 22px;
+    text-transform: uppercase;
+}
+
 h1 span {
     font-size:18px;
 }
 
+h1 span.date {
+    margin: 17px 0 0 0;
+    line-height: 100%;
+    display:block;
+    float: right;
+}
+
 h1 span a {
     color:c90000;
+}
+
+h3 {
+    text-transform: uppercase;
 }
 
 label {
@@ -308,6 +324,7 @@ a.button:hover {
 table.cart {
     width:100%;
     border:none;
+    margin-top:30px;
 }
 
 table.cart th {
@@ -321,6 +338,10 @@ table.cart td {
     border: none;
     border-bottom:2px solid rgba(255, 255, 255, 0.2);
     padding: 4px 0;
+}
+
+table.cart td.thumb > img {
+    width:100px;
 }
 
 input.empty {

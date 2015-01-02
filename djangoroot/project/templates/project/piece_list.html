@@ -2,6 +2,7 @@
 {% block content %}
 {% for piece in pieces %}
     <div class="item">
+        <img src="{{MEDIA_URL}}{{piece.hero_image}}">
         {% if piece.sold %}
         <a class="sold">SOLD!</a>
         {% else %}
@@ -13,8 +14,6 @@
         </form>
         {% endif %}
         <p class="title">{{piece.name}} - <span>h{{piece.unit_price}}</span> - </p>
-
-        <img src="{{MEDIA_URL}}{{piece.hero_image}}">
     </div>
 {% endfor %}
 {% endblock %}

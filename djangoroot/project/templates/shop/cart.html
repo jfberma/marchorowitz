@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-<h1>{% trans "Your shopping cart" %}</h1>
+<h1>{% trans "Cart" %}</h1>
 {% if request.GET.err or cart.total_price > user.coins.count %}
 <p class="text-error">
     {% if request.GET.err == "insufficient_balance" or cart.total_price > user.coins.count %}
@@ -16,9 +16,10 @@
     <table border="1" class="cart">
         <thead>
             <tr>
-                <th>{% trans "Product name" %}</th>
+                <th></th>
+                <th>{% trans "Name" %}</th>
                 <th colspan="2"></th>
-                <th class="price_hdr">{% trans "Unit price" %}</th>
+                <th class="price_hdr">{% trans "Price" %}</th>
             </tr>
         </thead>
 
@@ -26,15 +27,16 @@
         {% for form in formset %}
         {% with form.quantity as field %}
             <tr>
+                <td class="thumb"><img src="{{MEDIA_URL}}{{ form.instance.product.hero_image }}"></td>
                 <td>{{ form.instance.product.get_name }}</td>
                 <td colspan="2"></td>
-                <td>{{ form.instance.product.get_price }}</td>
+                <td>h{{ form.instance.product.get_price }}</td>
             </tr>
             {% for extra_price_field in form.instance.extra_price_fields %}
             <tr>
-                <td colspan="2">&nbsp;</td>
-                <td>{{ extra_price_field.0 }}</td>
-                <td>{{ extra_price_field.1 }}</td>
+                <td colspan="3">&nbsp;</td>
+                <td>h{{ extra_price_field.0 }}</td>
+                <td>h{{ extra_price_field.1 }}</td>
             </tr>
             {% endfor %}
             <!--<tr><td colspan="2">&nbsp;</td><td>{% trans "Line Total" %}:</td><td>{{ form.instance.line_total }}</td></tr>-->
@@ -46,12 +48,12 @@
             <!--<tr><td colspan="2">&nbsp;</td><td>{% trans "Cart Subtotal" %}</td><td>{{cart.subtotal_price}}</td></tr>-->
             {% for extra_price_field in cart.extra_price_fields %}
             <tr>
-                <td colspan="2">&nbsp;</td>
-                <td>{{ extra_price_field.0 }}</td>
-                <td>{{ extra_price_field.1 }}</td>
+                <td colspan="3">&nbsp;</td>
+                <td>h{{ extra_price_field.0 }}</td>
+                <td>h{{ extra_price_field.1 }}</td>
              </tr>
             {% endfor %}
-            <tr><td colspan="2">&nbsp;</td><td><b>{% trans "Cart Total" %}</b></td><td><b>{{cart.total_price}}</b></td></tr>
+            <tr><td colspan="3">&nbsp;</td><td><b>{% trans "Cart Total" %}</b></td><td><b>h{{cart.total_price}}</b></td></tr>
         </tfoot>
     </table>
 </form>

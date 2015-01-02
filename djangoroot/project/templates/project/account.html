@@ -3,11 +3,11 @@
 {% block content %}
 <h1>Account page</h1>
 {% if user.is_authenticated %}
-<h3>{{ user.username }}'s Stats</h3>
-<p>Member since: <strong>{{ user.date_joined }}</strong></p>
-<p>Coins: <strong>{{ user.coins.count|format_number }}</strong></p>
+<h3>{{ user.username }}</h3>
+<p>Member since: <strong>{{ user.date_joined|date:"M d, Y" }}</strong></p>
+<h3>Coins: <strong>{{ user.coins.count|format_number }}</strong></h3>
 
-<h3>Orders History</h3>
+<h3>Order History</h3>
 {% if orders.count == 0 %}
 <p>Nothing here...yet</p>
 {% else %}
