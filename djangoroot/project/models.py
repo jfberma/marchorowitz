@@ -15,6 +15,9 @@ class PieceCategory(models.Model):
 class Piece(Product):
     hero_image = models.ImageField("Image", upload_to='uploads')
     sold = models.BooleanField(default=False)
+    year = models.CharField(max_length=10, null=True)
+    dimensions = models.CharField(max_length=255, null=True)
+    medium = models.CharField(max_length=255, null=True)
     category = models.ForeignKey(PieceCategory, related_name="pieces", null=True)
 
     class Meta: pass

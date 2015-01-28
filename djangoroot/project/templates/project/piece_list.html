@@ -2,7 +2,7 @@
 {% block content %}
 {% for piece in pieces %}
     <div class="item">
-        <img src="{{MEDIA_URL}}{{piece.hero_image}}">
+        <a href="{{MEDIA_URL}}{{piece.hero_image}}" class="popup-link"><img src="{{MEDIA_URL}}{{piece.hero_image}}"></a>
         {% if piece.sold %}
         <a class="sold">SOLD!</a>
         {% else %}
@@ -13,7 +13,35 @@
             <input type="submit" value="Add to cart" class="list">
         </form>
         {% endif %}
-        <p class="title">{{piece.name}} - <span>h{{piece.unit_price}}</span> - </p>
+        <p class="title">
+            {{piece.name}}
+            {% if piece.year %} - {{ piece.year }}{% endif %}
+            {% if piece.dimensions %} - {{ piece.dimensions }}{% endif %}
+            {% if piece.medium %} - {{ piece.medium }}{% endif %}
+            - <span>h{{piece.unit_price}}</span> -
+        </p>
     </div>
 {% endfor %}
+    <script>
+        $(document).ready(function() {
+            $('.popup-link').magnificPopup({
+                type: 'image',
+                zoom: {
+                    enabled: true, // By default it's false, so don't forget to enable it
+
+                    duration: 300, // duration of the effect, in milliseconds
+                    easing: 'ease-in-out', // CSS transition easing function
+
+                    // The "opener" function should return the element from which popup will be zoomed in
+                    // and to which popup will be scaled down
+                    // By defailt it looks for an image tag:
+                    opener: function(openerElement) {
+                      // openerElement is the element on which popup was initialized, in this case its <a> tag
+                      // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+                      return openerElement.is('img') ? openerElement : openerElement.find('img');
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}

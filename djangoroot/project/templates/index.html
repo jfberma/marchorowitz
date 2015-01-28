@@ -4,7 +4,11 @@
     <div style="display: none;">{% products %}</div>
     {% for object in products %}
         <div class="item">
-            <p class="title">{{object.name}} - <span>h{{object.unit_price}}</span> - {% if object.sold %}<a>SOLD!</a>{% else %}<a href="">buy</a>{% endif %}</p>
+            <p class="title">
+                {{object.name}} -
+                <span>h{{object.unit_price}}</span> -
+                {% if object.sold %}<a>SOLD!</a>{% else %}<a href="">buy</a>{% endif %}
+            </p>
             <a href="{{object.get_absolute_url}}"><img src="{{MEDIA_URL}}{{object.hero_image}}"></a>
         </div>
     {% endfor %}
