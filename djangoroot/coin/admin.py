@@ -18,9 +18,10 @@ class CoinStatAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         coin_settings = CoinSettings.objects.get(pk=1)
-        mood_effect = (obj.mood - 50) * float(coin_settings.mood_weight)
-        productivity_effect = (obj.productivity - 50) * float(coin_settings.productivity_weight)
-        sales_effect = (obj.sales - 50) * float(coin_settings.sales_weight)
+        coin_stat = CoinStat.objects.all().order_by('-id')[0]
+        mood_effect = (obj.mood - coin_stat.mood) * float(coin_settings.mood_weight)
+        productivity_effect = (obj.productivity - coin_stat.productivity) * float(coin_settings.productivity_weight)
+        sales_effect = (obj.sales - coin_stat.sales) * float(coin_settings.sales_weight)
         last_record = CoinStat.objects.latest('created')
         obj.value = float(last_record.value) + mood_effect + productivity_effect + sales_effect
         obj.save()
