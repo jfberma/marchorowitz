@@ -30,8 +30,11 @@ class CoinStatAdmin(admin.ModelAdmin):
         mood_effect = (obj.mood - mood_value) * float(coin_settings.mood_weight)
         productivity_effect = (obj.productivity - productivity_value) * float(coin_settings.productivity_weight)
         sales_effect = (obj.sales - sales_value) * float(coin_settings.sales_weight)
-        last_record = CoinStat.objects.latest('created')
-        obj.value = float(last_record.value) + mood_effect + productivity_effect + sales_effect
+        try:
+            last_record = CoinStat.objects.latest('created')
+            obj.value = float(last_record.value) + mood_effect + productivity_effect + sales_effect
+        except CoinStat.DoesNotExist:
+            obj.value = 2 + mood_effect + productivity_effect + sales_effect
         obj.save()
 admin.site.register(CoinStat, CoinStatAdmin)
 
