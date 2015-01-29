@@ -14,5 +14,8 @@ def categories(request):
 
 
 def coin_stats(request):
-    latest_stat = CoinStat.objects.latest('created')
-    return {'coin_info': latest_stat}
+    try:
+        latest_stat = CoinStat.objects.latest('created')
+        return {'coin_info': latest_stat}
+    except CoinStat.DoesNotExist:
+        return {'coin_info': ''}
