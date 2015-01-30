@@ -115,7 +115,7 @@ SHOP_PAYMENT_BACKENDS = (
     'project.payment.PayWithCoinsBackend',
 )
 
-SHOP_OWNER_USERNAME = "jeremy"
+SHOP_OWNER_USERNAME = "marc.horowitz"
 
 STRIPE_SECRET_KEY = os.environ.get(
     "STRIPE_SECRET_KEY",
