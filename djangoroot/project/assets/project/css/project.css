@@ -79,9 +79,10 @@ body {
 
 .item-info > h2 {
     font-size: 22px;
-    margin: 0px;
+    margin: 0 0 4px;
     padding: 0px;
     font-family: 'ACaslonPro-BoldItalic';
+    line-height: 120%;
 }
 
 .item-info > p {
@@ -522,7 +523,10 @@ table#order_history td {
         top: 0px;
         left: 0px;
         right:0px;
-        margin: 0px auto;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        background: #3da399;
     }
 
     ul.menu li {
@@ -535,8 +539,53 @@ table#order_history td {
         float: left;
     }
 
-    ul.menu li.last {
-        border:none;
+    ul.menu li:first-child {
+        display: none;
     }
 
+    canvas {
+        display: none;
+    }
+
+    canvas#chart,
+    canvas#chart2 {
+        display: block;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 5px 0;
+    }
+
+    footer > p {
+        width: 100% !important;
+        margin: 0px !important;
+        padding: 0px !important;
+        text-align: center !important;
+    }
+
+    .item-info > h2 {
+        font-size: 18px;
+    }
+
+    .item-info > p {
+        font-size: 18px;
+    }
+
+    footer div#buy_coins_form input[type="text"], footer div#buy_coins_form input[type="number"] {
+        width:60px;
+    }
+
+    a.button, input[type="submit"], button[type="submit"] {
+        font-family: 'AkzidenzGroteskCE-Black', serif;
+        font-size: 12px;
+        padding: 5px 10px;
+        background: rgb(61, 163, 153);
+        border: none;
+        text-transform: uppercase;
+    }
+
+    .item-action > form {
+        margin: 0px 0 10px 0;
+    }
 }
