@@ -56,7 +56,7 @@ class ChargeView(View):
             customer.charge(Decimal(request.POST.get('amount')))
 
         coin_stat = CoinStat.objects.all().order_by('-id')[0]
-        coins = float(request.POST.get('amount')) / coin_stat.value
+        coins = Decimal(request.POST.get('amount')) / coin_stat.value
         transaction = Transaction()
         Transaction.buy_coins(transaction, request.user, coins)
 
