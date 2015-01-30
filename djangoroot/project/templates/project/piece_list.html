@@ -3,10 +3,30 @@
 {% for piece in pieces %}
     <div class="item">
         <a href="{{MEDIA_URL}}{{piece.hero_image}}" class="popup-link"><img src="{{MEDIA_URL}}{{piece.hero_image}}"></a>
+        <div class="item-info">
+            <h2>{{piece.name}}</h2>
+            <p class="item-stats">
+                {% if piece.dimensions %}{{ piece.dimensions }}, {% endif %}
+                {% if piece.medium %}{{ piece.medium }}, {% endif %}
+                {% if piece.year %}{{ piece.year }}{% endif %}
+            </p>
+        </div>
+        <div class="item-action">
+            {% if piece.sold %}
+                <button class="sold">SOLD</button>
+            {% else %}
+                <form method="post" action="{% url 'cart' %}" class="add-to-cart">{% csrf_token %}
+                    <input type="hidden" name="add_item_id" value="{{piece.pk}}">
+                    <input type="hidden" name="add_item_quantity" value="1">
+                    <input type="submit" value="Add to cart" class="list">
+                </form>
+                <p class="price">h{{piece.unit_price}}</p>
+            {% endif %}
+        </div>
+        <!--<a href="{{MEDIA_URL}}{{piece.hero_image}}" class="popup-link"><img src="{{MEDIA_URL}}{{piece.hero_image}}"></a>
         {% if piece.sold %}
         <a class="sold">SOLD!</a>
         {% else %}
-        <!--<a href="" onlick="">buy</a>-->
         <form method="post" action="{% url 'cart' %}" class="add-to-cart">{% csrf_token %}
             <input type="hidden" name="add_item_id" value="{{piece.pk}}">
             <input type="hidden" name="add_item_quantity" value="1">
@@ -19,7 +39,7 @@
             {% if piece.dimensions %} - {{ piece.dimensions }}{% endif %}
             {% if piece.medium %} - {{ piece.medium }}{% endif %}
             - <span>h{{piece.unit_price}}</span> -
-        </p>
+        </p>-->
     </div>
 {% endfor %}
     <script>
