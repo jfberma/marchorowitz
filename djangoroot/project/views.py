@@ -47,17 +47,18 @@ class AccountView(TemplateView):
 class ChargeView(View):
 
     def post(self, request, *args, **kwargs):
-        try:
-            customer = Customer.objects.get(user=request.user)
-        except Customer.DoesNotExist:
-            customer = Customer.create(user=request.user, card=request.POST.get('stripeToken'))
-
-        if customer.can_charge():
-            customer.charge(Decimal(request.POST.get('amount')))
-
-        response = {
-            'status': 'success',
-            'coins': request.user.coins.count()
-        }
-
-        return HttpResponse(json.dumps(response), mimetype='application/json')
+        return HttpResponse(json.dumps({ 'a':'A', 'b':(2, 4), 'c':3.0 }), mimetype='application/json')
+        # try:
+        #     customer = Customer.objects.get(user=request.user)
+        # except Customer.DoesNotExist:
+        #     customer = Customer.create(user=request.user, card=request.POST.get('stripeToken'))
+        #
+        # if customer.can_charge():
+        #     customer.charge(Decimal(request.POST.get('amount')))
+        #
+        # response = {
+        #     'status': 'success',
+        #     'coins': request.user.coins.count()
+        # }
+        #
+        # return HttpResponse(json.dumps(response), mimetype='application/json')
