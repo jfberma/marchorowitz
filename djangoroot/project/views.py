@@ -55,8 +55,10 @@ class ChargeView(View):
         if customer.can_charge():
             customer.charge(Decimal(request.POST.get('amount')))
 
+        coin_stat = CoinStat.objects.all().order_by('-id')[0]
+        coins = coin_stat.value / request.POST.get('amount')
         transaction = Transaction()
-        Transaction.buy_coins(transaction, request.user, request.POST.get('amount'))
+        Transaction.buy_coins(transaction, request.user, coins)
 
         response = {
             'status': 'success',
