@@ -1,6 +1,6 @@
 import json
 
-from coin.models import CoinStat
+from coin.models import CoinStat, Transaction
 from decimal import Decimal
 from django.http import HttpResponse
 from django.views.generic import ListView, TemplateView, View
@@ -54,6 +54,8 @@ class ChargeView(View):
 
         if customer.can_charge():
             customer.charge(Decimal(request.POST.get('amount')))
+
+        Transaction.buy_coins(request.user, request.POST.get('amount'))
 
         response = {
             'status': 'success',

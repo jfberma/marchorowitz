@@ -44,7 +44,6 @@ $(function() {
                 var coins = parseInt($('#coins-to-buy').val());
                 var value = parseFloat($("#rate").text());
                 amount = (value * coins).toFixed(2);
-                console.log("handler", handler);
                 handler.open({
                     name: 'Horowitz Coin',
                     description: coins + ' coins ($' + amount + ')',
