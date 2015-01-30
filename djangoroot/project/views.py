@@ -56,8 +56,8 @@ class ChargeView(View):
             customer.charge(Decimal(request.POST.get('amount')))
 
         response = {
-            'status': 'success'
-            #'coins': request.user.coins.count()
+            #'status': 'success'
+            'coins': request.user.coins.count()
         }
 
         return HttpResponse(json.dumps(response), mimetype='application/json')
