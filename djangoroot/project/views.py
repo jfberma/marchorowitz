@@ -51,7 +51,7 @@ class ChargeView(View):
             customer = Customer.objects.get(user=request.user)
         except Customer.DoesNotExist:
             customer = Customer.create(user=request.user, card=request.POST.get('stripeToken'))
-        return HttpResponse(json.dumps({ 'a':'A', 'b':(2, 4), 'c':3.0 }), mimetype='application/json')
+       
         if customer.can_charge():
             customer.charge(Decimal(request.POST.get('amount')))
         return HttpResponse(json.dumps({ '2':'2', '2':(2, 4), '4':3.0 }), mimetype='application/json')
