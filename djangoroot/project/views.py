@@ -21,7 +21,7 @@ class PieceListView(ListView):
             category = PieceCategory.objects.filter(name=self.kwargs['category_name'])
         except KeyError:
             category = PieceCategory.objects.filter(name='blue')
-        return Piece.objects.filter(category=category).order_by("-pk")
+        return Piece.objects.filter(category=category).order_by("-id")
 
 
 class AboutView(TemplateView):
