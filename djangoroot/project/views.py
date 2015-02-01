@@ -18,9 +18,9 @@ class PieceListView(ListView):
 
     def get_queryset(self):
         try:
-            category = PieceCategory.objects.filter(name=self.kwargs['category_name']).order_by('-pk')
+            category = PieceCategory.objects.filter(name=self.kwargs['category_name']).order_by('-id')
         except KeyError:
-            category = PieceCategory.objects.filter(name='blue').order_by('-pk')
+            category = PieceCategory.objects.filter(name='blue').order_by('-id')
         return Piece.objects.filter(category=category)
 
 
