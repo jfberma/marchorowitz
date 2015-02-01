@@ -23,6 +23,9 @@ class PieceListView(ListView):
             category = PieceCategory.objects.filter(name='blue').order_by('-id')
         return Piece.objects.filter(category=category)
 
+    class Meta:
+        ordering = ["-id"]
+
 
 class AboutView(TemplateView):
     template_name = "project/about.html"
