@@ -116,7 +116,7 @@ body {
 }
 
 .item-action > form {
-    margin: 5px 0 10px 0;
+    margin: 0px 0 10px 0;
 }
 
 .item-action > input {
@@ -506,6 +506,10 @@ table#order_history td.product {
 
 table#order_history td {
     padding:10px 0;
+}
+
+p.text-error {
+    font-size: 18px;
 }
 
 @media only screen and (max-width : 767px) {

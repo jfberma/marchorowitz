@@ -11,14 +11,14 @@ $(function() {
     }
 
     var bind = function() {
-        $('#buy_coins').click(function() {
-            $(this).hide();
+        $('.buy_coins').click(function() {
+            $('.buy_coins.footer').hide();
             $('#buy_coins_form ').show();
         });
 
         $('#cancel-buy').click(function() {
             $('#buy_coins_form ').hide();
-            $('#buy_coins').show();
+            $('.buy_coins.footer').show();
         });
 
         // Close Checkout on page navigation
@@ -44,6 +44,7 @@ $(function() {
                 var coins = parseInt($('#coins-to-buy').val());
                 var value = parseFloat($("#rate").text());
                 amount = (value * coins).toFixed(2);
+
                 handler.open({
                     name: 'Horowitz Coin',
                     description: coins + ' coins ($' + amount + ')',

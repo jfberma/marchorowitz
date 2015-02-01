@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 import json
 
 from coin.models import CoinStat, Transaction
@@ -17,9 +18,9 @@ class PieceListView(ListView):
 
     def get_queryset(self):
         try:
-            category = PieceCategory.objects.filter(name=self.kwargs['category_name'])
+            category = PieceCategory.objects.filter(name=self.kwargs['category_name']).order_by('-pk')
         except KeyError:
-            category = PieceCategory.objects.filter(name='blue')
+            category = PieceCategory.objects.filter(name='blue').order_by('-pk')
         return Piece.objects.filter(category=category)
 
 
@@ -42,6 +43,12 @@ class AccountView(TemplateView):
             orders = Order.objects.filter(user=self.request.user)
             context['orders'] = orders
         return context
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return redirect('login')
+
+        return super(AccountView, self).dispatch(request, *args, **kwargs)
 
 
 class ChargeView(View):

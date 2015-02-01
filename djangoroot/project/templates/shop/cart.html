@@ -5,7 +5,12 @@
 {% if request.GET.err or cart.total_price > user.coins.count %}
 <p class="text-error">
     {% if request.GET.err == "insufficient_balance" or cart.total_price > user.coins.count %}
-    You do not have enough Horowitz Coins to complete this purchase. <a href="#">Buy some Horowitz Coins?</a>
+    {% if user.is_authenticated == True %}
+    {{user.is_authenticated}}
+    You do not have enough Horowitz Coins to complete this purchase.<br /><a href="#" class="buy_coins">Buy some Horowitz Coins?</a>
+    {% else %}
+    You must be logged in to complete this purchase. <a href="/login">Login now!</a>
+    {% endif %}
     {% endif %}
 </p>
 {% endif %}
