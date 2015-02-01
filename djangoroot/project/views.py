@@ -18,13 +18,13 @@ class PieceListView(ListView):
 
     def get_queryset(self):
         try:
-            category = PieceCategory.objects.filter(name=self.kwargs['category_name']).order_by('-id')
+            category = PieceCategory.objects.filter(name=self.kwargs['category_name']).order_by('-name')
         except KeyError:
-            category = PieceCategory.objects.filter(name='blue').order_by('-id')
+            category = PieceCategory.objects.filter(name='blue').order_by('-name')
         return Piece.objects.filter(category=category)
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["-name"]
 
 
 class AboutView(TemplateView):
