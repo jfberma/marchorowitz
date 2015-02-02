@@ -411,7 +411,11 @@ table.cart th {
 table.cart td {
     border: none;
     border-bottom:2px solid rgba(255, 255, 255, 0.2);
-    padding: 4px 0;
+    padding: 4px 5px 4px 0;
+}
+
+table.cart td.total {
+    text-align: right;
 }
 
 table.cart td.thumb > img {
@@ -625,7 +629,7 @@ p.text-error {
     }
 
     .item-info > p {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     footer div#buy_coins_form input[type="text"], footer div#buy_coins_form input[type="number"] {
@@ -644,4 +648,24 @@ p.text-error {
     .item-action > form {
         margin: 0px 0 10px 0;
     }
+}
+
+@media only screen and (max-width : 1172px) {
+    .item-info > h2 {
+        font-size: 18px;
+    }
+
+    .item-info > p {
+        font-size: 14px;
+    }
+
+    a.button, input[type="submit"], button[type="submit"] {
+        font-family: 'AkzidenzGroteskCE-Black', serif;
+        font-size: 12px;
+        padding: 5px 10px;
+        background: rgb(61, 163, 153);
+        border: none;
+        text-transform: uppercase;
+    }
+
 }

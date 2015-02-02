@@ -6,7 +6,6 @@
 <p class="text-error">
     {% if request.GET.err == "insufficient_balance" or cart.total_price > user.coins.count %}
     {% if user.is_authenticated == True %}
-    {{user.is_authenticated}}
     You do not have enough Horowitz Coins to complete this purchase.<br /><a href="#" class="buy_coins">Buy some Horowitz Coins?</a>
     {% else %}
     You must be logged in to complete this purchase. <a href="/login">Login now!</a>
@@ -58,7 +57,7 @@
                 <td>h{{ extra_price_field.1 }}</td>
              </tr>
             {% endfor %}
-            <tr><td colspan="3">&nbsp;</td><td><b>{% trans "Cart Total" %}</b></td><td><b>h{{cart.total_price}}</b></td></tr>
+            <td colspan="4" class="total"><b>{% trans "Cart Total" %}</b></td><td><b>h{{cart.total_price}}</b></td></tr>
         </tfoot>
     </table>
 </form>
