@@ -375,8 +375,8 @@ a.button,
 input[type="submit"],
 button[type="submit"] {
     font-family: 'AkzidenzGroteskCE-Black', serif;
-    font-size: 16px;
-    padding:5px 15px;
+    font-size: 14px;
+    padding:5px 10px;
     background:rgb(61, 163, 153);
     border:none;
     text-transform: uppercase;
