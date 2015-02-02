@@ -384,6 +384,11 @@ button[type="submit"] {
 
 form.add-to-cart {
     float:right;
+    clear: left;
+}
+
+p.price {
+    clear: both;
 }
 
 a.button {
@@ -668,4 +673,15 @@ p.text-error {
         text-transform: uppercase;
     }
 
+}
+
+@media only screen and (max-width : 956px) and (min-width : 768px) {
+    a.button, input[type="submit"], button[type="submit"] {
+        font-family: 'AkzidenzGroteskCE-Black', serif;
+        font-size: 10px;
+        padding: 5px 5px;
+        background: rgb(61, 163, 153);
+        border: none;
+        text-transform: uppercase;
+    }
 }
