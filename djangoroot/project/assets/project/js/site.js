@@ -12,13 +12,13 @@ $(function() {
 
     var bind = function() {
         $('.buy_coins').click(function() {
-            $('.buy_coins.footer').hide();
-            $('#buy_coins_form ').show();
+            $('#buy-coins-overlay').show();
         });
 
-        $('#cancel-buy').click(function() {
-            $('#buy_coins_form ').hide();
-            $('.buy_coins.footer').show();
+        $('#buy-coins-overlay').click(function(e) {
+            if (e.target.id === "buy-coins-overlay"){
+                $('#buy-coins-overlay').hide();
+            }
         });
 
         // Close Checkout on page navigation
@@ -50,6 +50,7 @@ $(function() {
                     description: coins + ' coins ($' + amount + ')',
                     amount: amount * 100
                 });
+                $('#buy-coins-overlay').hide();
                 e.preventDefault();
             }
         });

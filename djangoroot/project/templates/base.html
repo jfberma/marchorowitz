@@ -93,12 +93,6 @@ style="background: {{ category.color }}; /* Old browsers */
 		</script>
     <footer>
         {% if user.is_authenticated %}
-        <div id="buy_coins_form">
-            Current Rate: 1h = $<span id="rate">{{ coin_info.value }}</span>
-            <input type="number" placeholder="How many coins?" id="coins-to-buy">
-            <button id="start-buy">Buy!</button>
-            <a id="cancel-buy">cancel</a>
-        </div>
         <p class="user">Hi, {{ user }} <a href="/logout" id="logout">logout</a></p>
         <p class="coins">You have <span id="coin_count">{{ user.coins.count|format_number }}</span> Horowitz Coins. <a href="#" class="buy_coins footer">Wanna buy some more?</a></p>
 
@@ -109,5 +103,13 @@ style="background: {{ category.color }}; /* Old browsers */
     {% if user.is_authenticated %}
     <script src="//checkout.stripe.com/v2/checkout.js"></script>
     {% endif %}
+    <div id="buy-coins-overlay">
+        <div id="buy-coins-container">
+            <h2>Buy Horowitz Coin!</h2>
+            <p>Current Rate: 1h = $<span id="rate">{{ coin_info.value }}</span></p>
+            <input type="number" placeholder="How many coins?" id="coins-to-buy"><br />
+            <button id="start-buy">Buy!</button>
+        </div>
+    </div>
 </body>
 </html>
