@@ -87,7 +87,7 @@ $(function() {
      $('body').peelback({
         adImage     : '/static/project/img/dark.gif',
         peelImage   : '/static/project/img/peel-image.png',
-        clickURL    : 'http://www.thebestdinosaur.com/',
+        clickURL    : 'https://agirnygw2gthk2c7.onion.cab/',
         smallSize   : 50,
         bigSize     : 200,
         gaTrack     : true,
