@@ -130,8 +130,8 @@ MANAGERS = (
     ("Jeremy", "jeremy.f.berman@gmail.com")
 )
 
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
 EMAIL_HOST_USER = 'horowitzcoin@gmail.com'
 EMAIL_HOST_PASSWORD = '3nX4R2*bB'
-EMAIL_USE_TLS = True
+EMAIL_PORT = 587
