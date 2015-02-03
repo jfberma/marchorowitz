@@ -39,7 +39,7 @@ http {
             }
         }
 
-        location /media/ { # STATIC_URL
+        location /uploads { # STATIC_URL
             alias ${buildout:directory}/media/uploads/; # STATIC_ROOT
             if ($query_string) {
                 expires max;
