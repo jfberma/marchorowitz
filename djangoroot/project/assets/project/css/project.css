@@ -573,9 +573,23 @@ p.text-error {
     margin-top: 10px;
 }
 
+p.coming-soon {
+    font-size: 18px;
+}
+
+p.shipping {
+    float: right;
+    font-family: 'AkzidenzGroteskCE-Roman';
+    font-size: 12px;
+}
+
 @media only screen and (max-width : 767px) {
     #peelback {
         display: none;
+    }
+
+    p.coming-soon {
+        font-size: 16px;
     }
 
     #container {
@@ -592,6 +606,7 @@ p.text-error {
         margin-right: auto;
         width: 100%;
         background: #3da399;
+        z-index: 2147483648;
     }
 
     ul.menu li {
@@ -615,6 +630,9 @@ p.text-error {
     canvas#chart,
     canvas#chart2 {
         display: block;
+        width:100%;
+        max-width: 100%;
+        height: auto!important;
     }
 
     footer {

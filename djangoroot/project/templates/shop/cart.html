@@ -67,6 +67,7 @@
     {% if not request.GET.err and cart.total_price <= user.coins.count %}
     <a href="{% url 'checkout_selection' %}" class="button">{% trans "Proceed to checkout" %}</a>
     {% endif %}
+    <p class="shipping">(prices include shipping to the continental USA)</p>
     <div class="clear"></div>
     <input type="submit" class="empty" value="{% trans "Empty Shopping Cart" %}"/>
 </form>

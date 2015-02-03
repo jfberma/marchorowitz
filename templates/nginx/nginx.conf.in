@@ -25,11 +25,11 @@ http {
 
     server {
         listen       ${project-env:port-http};
-        listen       ${project-env:port-https} ssl;
+        #listen       ${project-env:port-https} ssl;
         server_name  ${project-env:host};
 
-        ssl_certificate ${buildout:directory}/etc/nginx/server.crt;
-        ssl_certificate_key ${buildout:directory}/etc/nginx/server.key;
+        #ssl_certificate ${buildout:directory}/etc/nginx/server.crt;
+        #ssl_certificate_key ${buildout:directory}/etc/nginx/server.key;
 
         # https://docs.djangoproject.com/en/dev/howto/static-files/#serving-static-files-in-production
         location /static/ { # STATIC_URL
