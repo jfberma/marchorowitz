@@ -39,6 +39,13 @@ http {
             }
         }
 
+        location /media/ { # STATIC_URL
+            alias ${buildout:directory}/media/uploads/; # STATIC_ROOT
+            if ($query_string) {
+                expires max;
+            }
+        }
+
         location / {
             #root   html;
             #index  index.html index.htm;
