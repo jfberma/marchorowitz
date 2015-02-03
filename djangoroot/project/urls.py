@@ -42,11 +42,11 @@ urlpatterns = patterns('',
     (r'^charge', ChargeView.as_view()),
 )
 
-# if settings.DEBUG:
-#     import debug_toolbar
-#     urlpatterns += patterns('',
-#         (r'^media/(?P<path>.*)$', 'django.views.static.serve',
-#          {'document_root': settings.MEDIA_ROOT}),
-#         url(r'^__debug__/', include(debug_toolbar.urls)),
-#     )
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
+         {'document_root': settings.MEDIA_ROOT}),
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    )
 
