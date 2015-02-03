@@ -8,7 +8,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = ${project-env:django-debug}
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ENVIRONMENT = '${project-env:env-name}'
@@ -129,6 +129,8 @@ STRIPE_PUBLIC_KEY = os.environ.get(
 MANAGERS = (
     ("Jeremy", "jeremy.f.berman@gmail.com")
 )
+
+ALLOWED_HOSTS = ['*']
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
