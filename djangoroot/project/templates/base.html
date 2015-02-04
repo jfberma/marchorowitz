@@ -11,6 +11,7 @@
     <script src="{% static 'project/js/site.js' %}"></script>
     <script src="{% static 'project/js/jquery.peelback.js' %}"></script>
     <script src="{% static 'project/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="//checkout.stripe.com/v2/checkout.js"></script>
 
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'project/css/project.css' %}">
@@ -100,9 +101,6 @@ style="background: {{ category.color }}; /* Old browsers */
         <p class="user"><a href="/login" id="login">login!</a></p>
         {% endif %}
     </footer>
-    {% if user.is_authenticated %}
-    <script src="//checkout.stripe.com/v2/checkout.js"></script>
-    {% endif %}
     <div id="buy-coins-overlay">
         <div id="buy-coins-container">
             <h2>Buy Horowitz Coin!</h2>
