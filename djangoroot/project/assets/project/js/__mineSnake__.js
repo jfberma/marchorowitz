@@ -173,7 +173,6 @@
 
                 $.post('/coin/award-point/', { t:"somestupidshit" })
                     .done(function(data) {
-                        console.log(data);
                         if (data.award) {
                             awardCoin();
                         }
