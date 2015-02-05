@@ -30,7 +30,7 @@ http {
     }
 
     server {
-        #listen       ${project-env:port-http};
+        listen       ${project-env:port-http};
         listen       ${project-env:port-https} ssl;
         server_name  ${project-env:host};
 
