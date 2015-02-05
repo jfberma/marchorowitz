@@ -24,13 +24,13 @@ http {
     gzip_types      text/plain text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
     server {
-           listen         80;
+           listen       ${project-env:port-http};
            server_name    ${project-env:host};
            return         301 https://$server_name$request_uri;
     }
 
     server {
-        #listen       ${project-env:port-http};
+        listen       ${project-env:port-http};
         listen       ${project-env:port-https} ssl;
         server_name  ${project-env:host};
 
