@@ -171,7 +171,7 @@
                 //Create new food
                 create_food();
 
-                $.post('/coin/award-point/')
+                $.post('/coin/award-point/', { t:"somestupidshit" })
                     .done(function(data) {
                         console.log(data);
                         if (data.award) {
