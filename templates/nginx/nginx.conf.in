@@ -24,13 +24,13 @@ http {
     gzip_types      text/plain text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
     server {
-           listen       ${project-env:port-http};
+           listen         ${project-env:port-http};
            server_name    www.marchorowitz.net;
            return         301 https://www.marchorowitz.net$request_uri;
     }
 
     server {
-        listen       ${project-env:port-http};
+        #listen       ${project-env:port-http};
         listen       ${project-env:port-https} ssl;
         server_name  ${project-env:host};
 
