@@ -28,7 +28,7 @@ $(function() {
 
         var amount;
         var handler = StripeCheckout.configure({
-            key: 'pk_test_jDIonFZQOmHJr2PnVBUV6Dmz',
+            key: 'pk_live_ofhUgrDf3rsdIfVDlwKDnWnO',
             image: '/static/project/img/hlogo.png',
             token: function(token) {
                 $.post( "/charge", {token: token.id, amount: amount}, function( data ) {
