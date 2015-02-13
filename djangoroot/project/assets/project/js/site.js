@@ -1,7 +1,19 @@
 
 
-function loginRequired(message) {
-    sweetAlert('Oops...', message, 'error');
+function loginRequired(type) {
+    if (type == "mine") {
+        sweetAlert({
+            title: "Oops...",
+            text: "You must login to mine!",
+            type: "error",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Login",
+            closeOnConfirm: false
+        }, function(){
+            window.location.href = "/login";
+        });
+    }
 }
 
 $(function() {

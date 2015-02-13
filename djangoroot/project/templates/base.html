@@ -39,7 +39,7 @@ style="background: {{ category.color }}; /* Old browsers */
         <!------------------------>
         <li><a href="/about" class="graph"></a></li>
         <li><a href="/account" class="user"></a></li>
-        <li><a href="{% if user.is_authenticated %}javascript:window.startSnake(){% else %}#{% endif %}" {% if user.is_authenticated == False %}onClick="loginRequired('You must login to mine!')"{% endif %} class="mine"></a></li>
+        <li><a href="{% if user.is_authenticated %}javascript:window.startSnake(){% else %}#{% endif %}" {% if user.is_authenticated == False %}onClick="loginRequired('mine')"{% endif %} class="mine"></a></li>
         <li><a href="/contact" class="contact {% if view_id == 'contact' %} on{% endif %}"></a></li>
         <li><a href="/shop/cart" class="cart"></a></li>
     </ul>
