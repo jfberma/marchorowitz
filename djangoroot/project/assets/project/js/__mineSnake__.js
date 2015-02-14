@@ -56,6 +56,7 @@
                 .done(function(data) {
                     score = data.points;
                     $("#mining-rate").prepend(data.ppc + " ");
+                    $("#score").html("Score: <strong>" + score + "</strong>");
                 });
 
             //Lets add the keyboard controls now
@@ -167,14 +168,27 @@
                     x: nx,
                     y: ny
                 };
-                score++;
                 //Create new food
                 create_food();
 
                 $.post('/coin/award-point/', { t:"somestupidshit" })
                     .done(function(data) {
-                        if (data.award) {
-                            awardCoin();
+                        if (data.cheater) {
+                            sweetAlert({
+                                title: "CHEATER!",
+                                text: "Obviously the honor system doesn’t pertain to you, so you don’t get to mine anymore.",
+                                type: "error",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "I suck"
+                            }, function(){
+                                window.location.href = "http://www.scientology.org/";
+                            });
+                        } else {
+                            score = data.points;
+                            $("#score").html("Score: <strong>" + score + "</strong>");
+                            if (data.award) {
+                                awardCoin();
+                            }
                         }
                     });
             } else {
@@ -195,7 +209,7 @@
             //Lets paint the food
             paint_cell(food.x, food.y);
 
-            $("#score").html("Score: <strong>" + score + "</strong>");
+
 
 
         }
