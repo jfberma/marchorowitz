@@ -94,7 +94,8 @@ INSTALLED_APPS = (
     'contact_form',
     'debug_toolbar',
     'simplejson',
-    'payments'
+    'payments',
+    'django_cron',
 )
 
 GOOGLECHARTS_PACKAGES = ["corechart"]
@@ -137,3 +138,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'horowitzcoin@gmail.com'
 EMAIL_HOST_PASSWORD = '3nX4R2*bB'
 EMAIL_PORT = 587
+
+CRON_CLASSES = [
+    "coin.cron.UpdateStats"
+]

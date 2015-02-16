@@ -13,7 +13,7 @@ admin.site.register(Coin, CoinAdmin)
 
 
 class CoinStatAdmin(admin.ModelAdmin):
-    list_display = ('value',)
+    list_display = ('value','created')
     fields = ()
 
     def save_model(self, request, obj, form, change):
