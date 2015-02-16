@@ -13,10 +13,10 @@ class UpdateStats(CronJobBase):
         stat = CoinStat.objects.latest('created')
         now = datetime.datetime.now()
 
-        if stat.created.day != now.day:
-            new_stat = CoinStat()
-            new_stat.mood = stat.mood
-            new_stat.sales = stat.sales
-            new_stat.productivity = stat.productivity
-            new_stat.value = stat.value
-            new_stat.save()
+        #if stat.created.day != now.day:
+        new_stat = CoinStat()
+        new_stat.mood = stat.mood
+        new_stat.sales = stat.sales
+        new_stat.productivity = stat.productivity
+        new_stat.value = stat.value
+        new_stat.save()
