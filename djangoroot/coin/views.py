@@ -39,14 +39,15 @@ class MiningView(View):
 
         # check for cheating every x points
         if points % 50 == 0:
-            last_check = dt.strptime(request.session.get('cheat_check'), '%Y-%m-%d %H:%M:%S.%f')
-            # if you got x points in under 90 seconds, you're a fucking cheater
-            if datetime.datetime.now() < (last_check + timedelta(seconds=90)):
-                response_data['points'] = 0
-                response_data['cheater'] = 'Stop cheating, you cheater!'
-                request.session['points'] = 0
-                request.session['cheat_check'] = str(datetime.datetime.now())
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
+            if request.session.get('cheat_check') is not None:
+                last_check = dt.strptime(request.session.get('cheat_check'), '%Y-%m-%d %H:%M:%S.%f')
+                # if you got x points in under 90 seconds, you're a fucking cheater
+                if datetime.datetime.now() < (last_check + timedelta(seconds=90)):
+                    response_data['points'] = 0
+                    response_data['cheater'] = 'Stop cheating, you cheater!'
+                    request.session['points'] = 0
+                    request.session['cheat_check'] = str(datetime.datetime.now())
+                    return HttpResponse(json.dumps(response_data), content_type="application/json")
             request.session['cheat_check'] = str(datetime.datetime.now())
 
         request.session['points'] = points
