@@ -19,5 +19,6 @@ class Piece(Product):
     dimensions = models.CharField(max_length=255, null=True)
     medium = models.CharField(max_length=255, null=True)
     category = models.ForeignKey(PieceCategory, related_name="pieces", null=True)
+    order = models.PositiveIntegerField()
 
     class Meta: pass

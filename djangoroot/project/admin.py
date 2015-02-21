@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from models import PieceCategory
 from models import Piece
+from suit.admin import SortableModelAdmin
 
 
 class PieceCategoryAdmin(admin.ModelAdmin):
@@ -9,6 +10,7 @@ class PieceCategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
 admin.site.register(PieceCategory, PieceCategoryAdmin)
 
-class PieceAdmin(admin.ModelAdmin):
+class PieceAdmin(SortableModelAdmin):
     list_display = ('name', 'category')
+    sortable = 'order'
 admin.site.register(Piece, PieceAdmin)
