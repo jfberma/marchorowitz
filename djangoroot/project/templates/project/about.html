@@ -8,10 +8,21 @@
 <h3 class="date">{% now "F jS, Y H:i" %}</h3>
 
 <canvas id="chart" width="600" height="400"></canvas>
+<div id="journal-entry">
+    <h4></h4>
+    <a class="close-btn" onclick="closeJournalEntry()">x</a>
+    <p></p>
+</div>
 <h3>Influencers</h3>
 <canvas id="chart2" width="600" height="400"></canvas>
 
 <script>
+    var descriptions = [
+            {% for stat in coin_stats %}{
+            date:"{{ stat.created|date:'m/d/Y' }}",
+            description:"{{ stat.description|safe }}"
+            }{% if forloop.last == False %},{% endif %}{% endfor %}
+            ];
     var ctx = $("#chart").get(0).getContext("2d");
     var data = {
         labels: [{% for stat in coin_stats %}'{{ stat.created|date:'m/d/Y' }}'{% if forloop.last == False %},{% endif %}{% endfor %}],
@@ -71,6 +82,15 @@
 
     };
     var myLineChart = new Chart(ctx).Line(data, options);
+
+    $.each(descriptions, function(i) {
+        if (this.description != "None") {
+            myLineChart.datasets[0].points[i].strokeColor = "#c90000";
+            myLineChart.datasets[0].points[i].fillColor = "#c90000";
+            myLineChart.datasets[0].points[i].highlightFill = "#c90000";
+        }
+    });
+    myLineChart.update();
 
     var ctx2 = $("#chart2").get(0).getContext("2d");
     var data = {
@@ -143,22 +163,29 @@
     }
 
     var chart2 = new Chart(ctx2 ).Radar(data, options2);
+
+    $('#chart').click(function(e) {
+        var activePoints = myLineChart.getPointsAtEvent(e);
+        //var description = descriptions[activePoints[0].label];
+        $.each(descriptions, function() {
+            if (this.date == activePoints[0].label && this.description != "None") {
+                showJounalEntry(this.date, this.description);
+            }
+        });
+
+    });
+
+    function showJounalEntry(date, description) {
+        $('#journal-entry > h4').text(date);
+        $('#journal-entry > p').text(description);
+        $('#journal-entry').slideDown();
+    }
+
+    function closeJournalEntry() {
+        $('#journal-entry').slideUp();
+    }
 </script>
 
 <p class="coming-soon">*hCoin trading floor coming soon. buy early, buy often.</p>
-
-
-<!--<script src="//checkout.stripe.com/v2/checkout.js"></script>-->
-<!--<form action="/charge" method="POST">-->
-    <!--{% csrf_token %}-->
-    <!--<script-->
-        <!--src="https://checkout.stripe.com/checkout.js" class="stripe-button"-->
-        <!--data-key="pk_test_jDIonFZQOmHJr2PnVBUV6Dmz"-->
-        <!--data-image="/square-image.png"-->
-        <!--data-name="Demo Site"-->
-        <!--data-description="2 widgets ($20.00)"-->
-        <!--data-amount="2000">-->
-    <!--</script>-->
-<!--</form>-->
 
 {% endblock %}
