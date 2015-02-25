@@ -3,11 +3,13 @@
 from django.conf import settings
 from django.conf.urls import patterns, url
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 
 from coin.models import Transaction
+from project.settings_local import SHOP_OWNER_USERNAME
 
 from shop.util.decorators import on_method, shop_login_required, order_required
 
@@ -47,6 +49,18 @@ class PayWithCoinsBackend(object):
         transaction.receiver = User.objects.get(username=settings.SHOP_OWNER_USERNAME)
         transaction.amount = the_order.order_total
         transaction.save()
+
+        send_mail('Thanks for your purchase!', 'You will be contacted shortly with details about your purchase',
+                 'horowitzcoin.net', [request.user.email], fail_silently=False)
+
+        admin_message = '{user} has bought {item}! Here\'s their info!\n{order}'\
+            .format(user=request.user.username,
+                    item=the_order.items.all()[0].product.name,
+                    order=the_order.shipping_address_text)
+
+        send_mail('A purchase has been made!',
+                  admin_message,
+                  'horowitzcoin.net', [User.objects.get(username=SHOP_OWNER_USERNAME).email], fail_silently=False)
 
         # Mark items as sold
         # for item in the_order.items.all():
