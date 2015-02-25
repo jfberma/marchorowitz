@@ -11,6 +11,6 @@ class PieceCategoryAdmin(admin.ModelAdmin):
 admin.site.register(PieceCategory, PieceCategoryAdmin)
 
 class PieceAdmin(SortableModelAdmin):
-    list_display = ('name', 'category')
+    list_display = ('name', 'category', 'sold')
     sortable = 'order'
 admin.site.register(Piece, PieceAdmin)
