@@ -49,10 +49,10 @@ class PayWithCoinsBackend(object):
         transaction.save()
 
         # Mark items as sold
-        for item in the_order.items.all():
-            product = item.product
-            product.sold = True
-            product.save()
+        # for item in the_order.items.all():
+        #     product = item.product
+        #     product.sold = True
+        #     product.save()
 
         # Let's mark this as being complete for the full sum in our database
         # Set it as paid (it needs to be paid to the delivery guy, we assume
