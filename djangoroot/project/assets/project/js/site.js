@@ -97,13 +97,13 @@ $(function() {
     });
 
      $('body').peelback({
-        adImage     : '/static/project/img/dark.gif',
+        adImage     : '/static/project/img/test9-moreglassy_4web.jpg',
         peelImage   : '/static/project/img/peel-image.png',
         clickURL    : 'https://agirnygw2gthk2c7.onion.cab/',
         smallSize   : 50,
-        bigSize     : 200,
+        bigSize     : 300,
         gaTrack     : true,
-        gaLabel     : '#1 Stegosaurus',
+        gaLabel     : 'darkness awaits you',
         autoAnimate : true,
         debug       : false
      });
