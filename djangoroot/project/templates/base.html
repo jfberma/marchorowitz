@@ -92,6 +92,8 @@ style="background: {{ category.color }}; /* Old browsers */
 			};
 
 			render();
+
+            $(renderer.domElement).addClass('buy_coins');
 		</script>
     <footer>
         {% if user.is_authenticated %}
