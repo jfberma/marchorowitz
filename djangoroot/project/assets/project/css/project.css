@@ -113,6 +113,8 @@ body {
     font-size: 16px;
     padding:5px 15px;
     text-transform: uppercase;
+    cursor: default;
+    color:#000;
 }
 
 .item-action > form {

@@ -13,7 +13,7 @@
         </div>
         <div class="item-action">
             {% if piece.sold %}
-                <button class="sold">SOLD</button>
+                <button class="sold" disabled>SOLD</button>
             {% else %}
                 <form method="post" action="{% url 'cart' %}" class="add-to-cart">{% csrf_token %}
                     <input type="hidden" name="add_item_id" value="{{piece.pk}}">
