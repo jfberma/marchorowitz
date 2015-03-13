@@ -1,189 +1,139 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block extra_includes %}
-<script src="{% static 'project/js/Chart.min.js' %}"></script>
+<script src="{% static 'project/js/highcharts.js' %}"></script>
 {% endblock %}
 {% block content %}
 <h1>hCoin Market *</h1>
 <h3 class="date">{% now "F jS, Y H:i" %}</h3>
 
-<canvas id="chart" width="600" height="400"></canvas>
+<div id="chart"></div>
 <div id="journal-entry">
     <h4></h4>
     <a class="close-btn" onclick="closeJournalEntry()">x</a>
     <p></p>
 </div>
-<h3>Influencers</h3>
-<canvas id="chart2" width="600" height="400"></canvas>
-
 <script>
+$(function () {
     var descriptions = [
             {% for stat in coin_stats %}{
             date:"{{ stat.created|date:'m/d/Y' }}",
             description:"{{ stat.description|safe }}"
             }{% if forloop.last == False %},{% endif %}{% endfor %}
             ];
-    var ctx = $("#chart").get(0).getContext("2d");
-    var data = {
-        labels: [{% for stat in coin_stats %}'{{ stat.created|date:'m/d/Y' }}'{% if forloop.last == False %},{% endif %}{% endfor %}],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [{% for stat in coin_stats %}{{ stat.value }}{% if forloop.last == False %},{% endif %}{% endfor %}]
+    var dates = [{% for stat in coin_stats %}'{{ stat.created|date:'m/d/y' }}'{% if forloop.last == False %},{% endif %}{% endfor %}];
+    var mood = [{% for stat in coin_stats %}{{ stat.mood }}{% if forloop.last == False %},{% endif %}{% endfor %}];
+    var sales = [{% for stat in coin_stats %}{{ stat.sales }}{% if forloop.last == False %},{% endif %}{% endfor %}];
+    var productivity = [{% for stat in coin_stats %}{{ stat.productivity }}{% if forloop.last == False %},{% endif %}{% endfor %}];
+
+    $('#chart').highcharts({
+        chart: {
+            backgroundColor:'rgba(255, 255, 255, 0.0)',
+            panning: true,
+            type: 'spline'
+        },
+        title: {
+            text: null
+        },
+        tooltip: {
+            useHTML: true,
+            formatter: function() {
+                var html = "<div>";
+                html += "<p class='tt-title'>" + dates[this.x] + "</p>";
+                html += "<p class='tt-value'><strong>$" + this.y.toFixed(2) + "</strong> = 1 hCoin</p>";
+                html += "<p class='tt-title-inf'>influencers:</p>";
+                html += "<p class='tt-mood'>mood: " + mood[this.x] + "</p>";
+                html += "<p class='tt-sales'>sales: " + sales[this.x] + "</p>";
+                html += "<p class='tt-productivity'>productivity: " + productivity[this.x] + "</p>";
+                html += "</div>";
+                return html;
             }
-        ]
-    };
-    var options = {
-        responsive:true,
-        scaleFontSize:10,
-        ///Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines : true,
-
-        //String - Colour of the grid lines
-        scaleGridLineColor : "rgba(0,0,0,.05)",
-
-        //Number - Width of the grid lines
-        scaleGridLineWidth : 1,
-
-        //Boolean - Whether the line is curved between points
-        bezierCurve : true,
-
-        //Number - Tension of the bezier curve between points
-        bezierCurveTension : 0.4,
-
-        //Boolean - Whether to show a dot for each point
-        pointDot : true,
-
-        //Number - Radius of each point dot in pixels
-        pointDotRadius : 4,
-
-        //Number - Pixel width of point dot stroke
-        pointDotStrokeWidth : 1,
-
-        //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-        pointHitDetectionRadius : 20,
-
-        //Boolean - Whether to show a stroke for datasets
-        datasetStroke : true,
-
-        //Number - Pixel width of dataset stroke
-        datasetStrokeWidth : 2,
-
-        //Boolean - Whether to fill the dataset with a colour
-        datasetFill : true,
-        scaleLabel : "<%= '$' + Number(value).toFixed(2) %>",
-        tooltipTemplate: "{% verbatim %}<%if (label){%>1 hCoin = <%}%>$<%= value.toFixed(2) %>{% endverbatim %}"
-
-    };
-    var myLineChart = new Chart(ctx).Line(data, options);
-
-    $.each(descriptions, function(i) {
-        if (this.description != "None") {
-            myLineChart.datasets[0].points[i].strokeColor = "#c90000";
-            myLineChart.datasets[0].points[i].fillColor = "#c90000";
-            myLineChart.datasets[0].points[i].highlightFill = "#c90000";
-        }
+        },
+        xAxis: {
+            min: 10,
+            labels: {
+                formatter: function() { return dates[parseInt(this.value)]; },
+                style: {
+                    fontSize:'10px'
+                }
+            }
+        },
+        yAxis: [{
+            labels: {
+                formatter: function() { return "$" + this.value; }
+            },
+            title: {
+                text: null
+            },
+            min: 0,
+            max: 5
+        },
+        {
+            title: {
+                text: null
+            },
+            opposite: true,
+            min: 0,
+            max: 100
+        }],
+        colors: ["rgba(51,51,51,1.0)", "rgba(214,0,156,0.2)", "rgba(0,76,214,0.2)", "rgba(214,0,76,0.2)"],
+        plotOptions: {
+            series: {
+                point: {
+                    events: {
+                        click: function() {
+                            if (descriptions[this.x].description != "None") {
+                                showJounalEntry(descriptions[this.x].date, descriptions[this.x].description);
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'USD to hCoin',
+            data: [{% for stat in coin_stats %}{% if stat.description %}{y:{{stat.value}},marker:{fillColor:'#c90000', radius:6, states:{hover:{fillColor:'#c90000'}}}}{% if forloop.last == False %},{% endif %}{% else %}{{stat.value}}{% if forloop.last == False %},{% endif %}{% endif %}{% endfor %}],
+            zIndex: 5
+        },
+        {
+            marker: {
+                enabled: false
+            },
+            enableMouseTracking:false,
+            name: 'mood',
+            yAxis: 1,
+            data: mood
+        },
+        {
+            marker: {
+                enabled: false
+            },
+            enableMouseTracking:false,
+            name: 'sales',
+            yAxis: 1,
+            data: sales
+        },
+        {
+            marker: {
+                enabled: false
+            },
+            enableMouseTracking:false,
+            name: 'productivity',
+            yAxis: 1,
+            data: productivity
+        }]
     });
-    myLineChart.update();
+});
 
-    var ctx2 = $("#chart2").get(0).getContext("2d");
-    var data = {
-        labels: ["Mood", "Productivity", "Sales"],
-        datasets: [
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [{% with cs=coin_stats|last %}{{cs.mood}}, {{cs.productivity}}, {{cs.sales}}{% endwith %}]
-            }
-        ]
-    };
+function showJounalEntry(date, description) {
+    $('#journal-entry > h4').text(date);
+    $('#journal-entry > p').text(description);
+    $('#journal-entry').slideDown();
+}
 
-    var options2 = {
-        //Boolean - Whether to show lines for each scale point
-        scaleShowLine : true,
-
-        //Boolean - Whether we show the angle lines out of the radar
-        angleShowLineOut : true,
-
-        //Boolean - Whether to show labels on the scale
-        scaleShowLabels : false,
-
-        // Boolean - Whether the scale should begin at zero
-        scaleBeginAtZero : true,
-
-        //String - Colour of the angle line
-        angleLineColor : "rgba(0,0,0,.1)",
-
-        //Number - Pixel width of the angle line
-        angleLineWidth : 1,
-
-        //String - Point label font declaration
-        pointLabelFontFamily : "'Arial'",
-
-        //String - Point label font weight
-        pointLabelFontStyle : "bold",
-
-        //Number - Point label font size in pixels
-        pointLabelFontSize : 14,
-
-        //String - Point label font colour
-        pointLabelFontColor : "#333",
-
-        //Boolean - Whether to show a dot for each point
-        pointDot : true,
-
-        //Number - Radius of each point dot in pixels
-        pointDotRadius : 3,
-
-        //Number - Pixel width of point dot stroke
-        pointDotStrokeWidth : 1,
-
-        //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-        pointHitDetectionRadius : 20,
-
-        //Boolean - Whether to show a stroke for datasets
-        datasetStroke : true,
-
-        //Number - Pixel width of dataset stroke
-        datasetStrokeWidth : 2,
-
-        //Boolean - Whether to fill the dataset with a colour
-        datasetFill : true
-    }
-
-    var chart2 = new Chart(ctx2 ).Radar(data, options2);
-
-    $('#chart').click(function(e) {
-        var activePoints = myLineChart.getPointsAtEvent(e);
-        //var description = descriptions[activePoints[0].label];
-        $.each(descriptions, function() {
-            if (this.date == activePoints[0].label && this.description != "None") {
-                showJounalEntry(this.date, this.description);
-            }
-        });
-
-    });
-
-    function showJounalEntry(date, description) {
-        $('#journal-entry > h4').text(date);
-        $('#journal-entry > p').text(description);
-        $('#journal-entry').slideDown();
-    }
-
-    function closeJournalEntry() {
-        $('#journal-entry').slideUp();
-    }
+function closeJournalEntry() {
+    $('#journal-entry').slideUp();
+}
 </script>
 
 <p class="coming-soon">*hCoin trading floor coming soon. buy early, buy often.</p>
