@@ -28,7 +28,7 @@ class CoinStat(models.Model):
     mood = models.IntegerField()
     productivity = models.IntegerField()
     sales = models.IntegerField()
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def clean(self):
