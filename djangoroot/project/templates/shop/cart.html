@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-<h1>{% trans "Cart" %}</h1>
+<h1><span class="lower">h</span>Coin Market Cart</h1>
 {% if request.GET.err or cart.total_price > user.coins.count %}
-<p class="text-error">
+{% if cart_items %}
+<div id="error-container">
     {% if request.GET.err == "insufficient_balance" or cart.total_price > user.coins.count %}
     {% if user.is_authenticated == True %}
-    You do not have enough Horowitz Coins to complete this purchase.<br /><a href="#" class="buy_coins">Buy some Horowitz Coins?</a>
+    <p class="error">You do not have enough Horowitz Coins to complete this purchase.</p><p><a href="#" class="buy_coins">Buy some Horowitz Coins?</a></p>
     {% else %}
-    You must be logged in to complete this purchase. <a href="/login">Login now!</a>
+    <p class="error">You must be logged in to complete this purchase.</p><p><a href="/login">Login now!</a></p>
     {% endif %}
     {% endif %}
-</p>
+</div>
+{% endif %}
 {% endif %}
 {% if cart_items %}
 <form method="post" action="{% url 'cart_update' %}">
@@ -58,6 +60,11 @@
              </tr>
             {% endfor %}
             <td colspan="4" class="total"><b>{% trans "Cart Total" %}</b></td><td><b>h{{cart.total_price}}</b></td></tr>
+            <tr>
+                <td colspan="5">
+                    <p class="shipping">(prices include shipping to the continental USA)</p>
+                </td>
+            </tr>
         </tfoot>
     </table>
 </form>
@@ -67,7 +74,6 @@
     {% if not request.GET.err and cart.total_price <= user.coins.count %}
     <a href="{% url 'checkout_selection' %}" class="button">{% trans "Proceed to checkout" %}</a>
     {% endif %}
-    <p class="shipping">(prices include shipping to the continental USA)</p>
     <div class="clear"></div>
     <input type="submit" class="empty" value="{% trans "Empty Shopping Cart" %}"/>
 </form>

@@ -61,6 +61,7 @@ body {
     padding-top:40px;
     padding-bottom: 100px;
     max-width: 1280px;
+    position: relative;
 }
 
 .item {
@@ -313,10 +314,16 @@ h1 {
     margin-top: 22px;
     text-transform: uppercase;
     font-family: 'AkzidenzGroteskCE-Black', sans-serif;
+    font-size: 24px;
 }
 
 h1 span {
-    font-size:18px;
+    font-size:20px;
+}
+
+h1 span.lower {
+    text-transform: lowercase;
+    font-size: 24px;
 }
 
 h1 span.date {
@@ -331,6 +338,7 @@ h1 span a {
 }
 
 h3 {
+    font-size:20px;
     text-transform: uppercase;
     font-family: 'AkzidenzGroteskCE-Roman', sans-serif;
 }
@@ -439,12 +447,21 @@ table.cart td.thumb > img {
     width:100px;
 }
 
+table.cart tfoot tr:first-child td {
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+
+table.cart tfoot tr:last-child td {
+    padding-bottom: 0px;
+}
+
 input.empty {
-    background:none;
+    background:none !important;
     font-size: 12px;
-    padding:0px;
+    padding:0px !important;
     margin-top: 20px;
-    color:#c90000;
+    color:#ffc500;
 }
 
 #id_shipping_method {
@@ -526,12 +543,30 @@ table#order_history td.product {
     width:30%;
 }
 
-table#order_history td {
+table#order_history td,
+table#order_history th {
     padding:10px 0;
+    font-size: 14px;
 }
 
-p.text-error {
-    font-size: 18px;
+div#error-container {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    top:150px;
+    width: 100%;
+}
+
+div#error-container > p {
+    color: #ff053a;
+    font-family: 'ACaslonPro-Italic';
+}
+
+div#error-container > p > a {
+    font-family: 'ACaslonPro';
+    color: #000;
 }
 
 #buy-coins-overlay {

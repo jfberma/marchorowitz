@@ -11,7 +11,7 @@
     <script src="{% static 'project/js/mineSnake.js' %}"></script>
     <script src="{% static 'project/js/sweet-alert.min.js' %}"></script>
     <script src="{% static 'project/js/site.js' %}"></script>
-    <script src="{% static 'project/js/jquery.peelback.js' %}"></script>
+    <script src="{% static 'project/js/jquery.pb.js' %}"></script>
     <script src="{% static 'project/js/jquery.magnific-popup.min.js' %}"></script>
     <script src="//checkout.stripe.com/v2/checkout.js"></script>
 
@@ -128,7 +128,7 @@ style="background: {{ category.color }}; /* Old browsers */
         <div id="buy-coins-container">
             <h2>Buy Horowitz Coin!</h2>
             <p>Current Rate: 1h = $<span id="rate">{{ coin_info.value }}</span></p>
-            <input type="number" placeholder="How many coins?" id="coins-to-buy"><br />
+            <input type="number" min="0" placeholder="how many coins?" id="coins-to-buy"><br />
             <button id="start-buy">Buy!</button>
         </div>
     </div>
