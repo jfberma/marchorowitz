@@ -3,7 +3,9 @@
 <h1>Contact</h1>
 <form method="post">
     {% csrf_token %}
-    {{ form }}
+    <input id="id_name" maxlength="100" name="name" type="text" placeholder="name" />
+    <input id="id_email" maxlength="200" name="email" type="email" placeholder="email address" />
+    <textarea cols="40" id="id_body" name="body" rows="10" placeholder="message"></textarea>
     <input type="submit" value="send" style="margin-top:20px;" />
 </form>
 {% endblock %}
