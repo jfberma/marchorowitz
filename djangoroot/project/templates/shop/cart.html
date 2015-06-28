@@ -7,7 +7,7 @@
 <div id="error-container">
     {% if request.GET.err == "insufficient_balance" or cart.total_price > user.coins.count %}
     {% if user.is_authenticated == True %}
-    <p class="error">You do not have enough Horowitz Coins to complete this purchase.</p><p><a href="#" class="buy_coins">Buy some Horowitz Coins?</a></p>
+    <p class="error">You do not have enough hCoin to complete this purchase.</p><p><a href="#" class="buy_coins">Buy some hCoin?</a></p>
     {% else %}
     <p class="error">You must be logged in to complete this purchase.</p><p><a href="/login">Login now!</a></p>
     {% endif %}
@@ -34,9 +34,9 @@
         {% with form.quantity as field %}
             <tr>
                 <td class="thumb"><img src="{{MEDIA_URL}}{{ form.instance.product.hero_image }}"></td>
-                <td>{{ form.instance.product.get_name }}</td>
+                <td class="prod-name">{{ form.instance.product.get_name }}</td>
                 <td colspan="2"></td>
-                <td>h{{ form.instance.product.get_price }}</td>
+                <td class="prod-price">h{{ form.instance.product.get_price }}</td>
             </tr>
             {% for extra_price_field in form.instance.extra_price_fields %}
             <tr>
@@ -59,7 +59,7 @@
                 <td>h{{ extra_price_field.1 }}</td>
              </tr>
             {% endfor %}
-            <td colspan="4" class="total"><b>{% trans "Cart Total" %}</b></td><td><b>h{{cart.total_price}}</b></td></tr>
+            <td colspan="4" class="total"><b>{% trans "Cart Total" %}</b></td><td class="total-price"><b>h{{cart.total_price}}</b></td></tr>
             <tr>
                 <td colspan="5">
                     <p class="shipping">(prices include shipping to the continental USA)</p>
@@ -71,11 +71,10 @@
 
 <form action="{% url 'cart_delete' %}" method="post">
     {% csrf_token %}
-    {% if not request.GET.err and cart.total_price <= user.coins.count %}
-    <a href="{% url 'checkout_selection' %}" class="button">{% trans "Proceed to checkout" %}</a>
-    {% endif %}
-    <div class="clear"></div>
     <input type="submit" class="empty" value="{% trans "Empty Shopping Cart" %}"/>
+    {% if not request.GET.err and cart.total_price <= user.coins.count %}
+    <a href="{% url 'checkout_selection' %}" class="button checkout">{% trans "Checkout" %}</a>
+    {% endif %}
 </form>
 
 
