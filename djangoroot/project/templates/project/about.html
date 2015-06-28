@@ -4,7 +4,7 @@
 <script src="{% static 'project/js/highcharts.js' %}"></script>
 {% endblock %}
 {% block content %}
-<h1>hCoin Market *</h1>
+<h1><span class="lower">h</span>Coin Market</h1>
 <h3 class="date">{% now "F jS, Y H:i" %}</h3>
 
 <div id="chart"></div>
@@ -54,13 +54,17 @@ $(function () {
             labels: {
                 formatter: function() { return dates[parseInt(this.value)]; },
                 style: {
-                    fontSize:'10px'
+                    fontSize:'10px',
+                    color:'#fff'
                 }
             }
         },
         yAxis: [{
             labels: {
-                formatter: function() { return "$" + this.value; }
+                formatter: function() { return "$" + this.value; },
+                style: {
+                    color:'#fff'
+                }
             },
             title: {
                 text: null
@@ -126,9 +130,11 @@ $(function () {
 });
 
 function showJounalEntry(date, description) {
-    $('#journal-entry > h4').text(date);
-    $('#journal-entry > p').text(description);
-    $('#journal-entry').slideDown();
+    if (description != "" && description != "None") {
+        $('#journal-entry > h4').text(date);
+        $('#journal-entry > p').text(description);
+        $('#journal-entry').slideDown();
+    }
 }
 
 function closeJournalEntry() {
@@ -136,6 +142,6 @@ function closeJournalEntry() {
 }
 </script>
 
-<p class="coming-soon">*hCoin trading floor coming soon. buy early, buy often.</p>
+<p class="coming-soon"><em>hCoin trading floor coming soon. buy early, buy often.</em></p>
 
 {% endblock %}

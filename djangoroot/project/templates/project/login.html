@@ -7,13 +7,11 @@
 
 <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
     {% csrf_token %}
-    {{ form.username.label_tag }}
-    {{ form.username }}
-    {{ form.password.label_tag }}
-    {{ form.password }}
+    <input id="id_username" maxlength="254" name="username" type="text" placeholder="username">
+    <input id="id_password" name="password" type="password" placeholder="password">
     <div class="clear"></div>
-    <p><a href="/accounts/password/reset/">Forgot Password?</a></p>
-    <input type="submit" value="login" style="margin-top:20px;" />
+    <a href="/accounts/password/reset/" class="forgot">Forgot Password?</a>
+    <input type="submit" value="login" />
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
