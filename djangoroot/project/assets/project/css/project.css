@@ -64,6 +64,46 @@ body {
     position: relative;
 }
 
+input::-webkit-input-placeholder {
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
+input:-ms-input-placeholder {
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
+textarea::-webkit-input-placeholder {
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
+textarea:-ms-input-placeholder {
+    font-family: 'ACaslonPro-Italic';
+    color:#666;
+}
+
 .item {
     margin-bottom: 40px;
 }
@@ -318,7 +358,7 @@ h1 {
 }
 
 h1 span {
-    font-size:20px;
+    font-size:16px;
 }
 
 h1 span.lower {
@@ -334,13 +374,21 @@ h1 span.date {
 }
 
 h1 span a {
-    color:c90000;
+    color:#ffc500;
+}
+
+h1 span a:hover {
+    color:#ffc500;
 }
 
 h3 {
     font-size:20px;
     text-transform: uppercase;
     font-family: 'AkzidenzGroteskCE-Roman', sans-serif;
+}
+
+h3.date {
+    margin: -10px 0 40px;
 }
 
 label {
@@ -397,7 +445,7 @@ button[type="submit"] {
     font-family: 'AkzidenzGroteskCE-Black', serif;
     font-size: 14px;
     padding:5px 10px;
-    background:rgb(61, 163, 153);
+    background-color: #d4ebed;
     border:none;
     text-transform: uppercase;
 }
@@ -418,6 +466,11 @@ a.button {
 a.button:hover {
     color:#000;
     text-decoration: none;
+}
+
+a.forgot {
+    float: right;
+    color:#ffc500;
 }
 
 table.cart {
@@ -443,8 +496,28 @@ table.cart td.total {
     text-align: right;
 }
 
+table.cart td.thumb {
+    width:100px;
+}
+
 table.cart td.thumb > img {
     width:100px;
+}
+
+table.cart td.prod-name {
+    padding-left:30px;
+    font-size:18px;
+    font-family: 'ACaslonPro-Italic';
+}
+
+table.cart td.prod-price {
+    font-size:18px;
+    font-family: 'ACaslonPro-Italic';
+}
+
+table.cart td.total-price {
+    font-size:18px;
+    font-family: 'ACaslonPro-Italic';
 }
 
 table.cart tfoot tr:first-child td {
@@ -460,8 +533,13 @@ input.empty {
     background:none !important;
     font-size: 12px;
     padding:0px !important;
-    margin-top: 20px;
+    margin-top: 5px;
     color:#ffc500;
+}
+
+a.checkout {
+    float: right;
+    background-color: #d4ebed;
 }
 
 #id_shipping_method {
@@ -553,7 +631,7 @@ div#error-container {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.9);
     text-align: center;
-    padding: 20px 0;
+    padding: 55px 0;
     font-size: 14px;
     top:150px;
     width: 100%;
@@ -622,8 +700,10 @@ div#error-container > p > a {
 }
 
 p.coming-soon {
-    font-size: 18px;
-    margin-top:20px;
+    font-size: 16px;
+    margin-top:40px;
+    text-align: center;
+    font-family: 'ACaslonPro-Italic';
 }
 
 p.shipping {
@@ -813,7 +893,7 @@ p.shipping {
         font-family: 'AkzidenzGroteskCE-Black', serif;
         font-size: 12px;
         padding: 5px 10px;
-        background: rgb(61, 163, 153);
+        background-color: #d4ebed;
         border: none;
         text-transform: uppercase;
     }
@@ -848,7 +928,7 @@ p.shipping {
         font-family: 'AkzidenzGroteskCE-Black', serif;
         font-size: 10px;
         padding: 5px 5px;
-        background: rgb(61, 163, 153);
+        background-color: #d4ebed;
         border: none;
         text-transform: uppercase;
     }
