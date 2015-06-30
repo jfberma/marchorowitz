@@ -85,27 +85,28 @@ style="background: {{ category.color }}; /* Old browsers */
 
             var mesh;
             loader.load( "{% static 'project/js/coin.js' %}", function( geometry ) {
-                mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
-                mesh.rotation.z = 0 * Math.PI / 180
-                mesh.rotation.x = 90 * Math.PI / 180
+                mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial({color: 0xffffff }) );
+
+                //mesh.rotation.z = 0 * Math.PI / 180
+                //mesh.rotation.x = 90 * Math.PI / 180
                 scene.add(mesh);
             } );
 
-            var ambientLight = new THREE.AmbientLight(0xC0C0C0);
-            scene.add(ambientLight);
 
             var directionalLight = new THREE.DirectionalLight(0xffffff);
             directionalLight.position.set(1, 1, 1).normalize();
             scene.add(directionalLight);
 
 
-			camera.position.z = 3;
+			camera.position.z = 10;
+            camera.position.y = -1;
+            camera.position.x = 1;
 
 			var render = function () {
 				requestAnimationFrame(render);
 
                 if (mesh) {
-                    mesh.rotation.z += 0.02;
+                    mesh.rotation.y += 0.02;
                 }
 
 				renderer.render(scene, camera);
