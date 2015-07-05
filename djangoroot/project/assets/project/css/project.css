@@ -781,14 +781,14 @@ p.shipping {
 }
 
 .tt-mood {
-    color:#d6009c;
+    color:#FFFF00;
     font-size:10px;
     margin:0px;
     padding:0px;
 }
 
 .tt-sales {
-    color:#004cd6;
+    color:#00FFFF;
     font-size:10px;
     margin:0px;
     padding:0px;
@@ -796,7 +796,7 @@ p.shipping {
 
 
 .tt-productivity {
-    color:#d6004c;
+    color:#FF00FF;
     font-size:10px;
     margin:0px;
     padding:0px;
