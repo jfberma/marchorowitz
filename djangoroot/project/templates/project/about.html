@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 <h1><span class="lower">h</span>Coin Market</h1>
-<h3 class="date">{% now "F jS, Y H:i" %} PST</h3>
+<h3 class="date">{% now "F j, Y H:i" %} PST</h3>
 
 <div id="chart"></div>
 <div id="journal-entry">
@@ -51,6 +51,8 @@ $(function () {
         },
         xAxis: {
             min: 1,
+            tickColor: '#fff',
+            lineColor: "#fff",
             labels: {
                 formatter: function() { return dates[parseInt(this.value)]; },
                 style: {
@@ -60,6 +62,7 @@ $(function () {
             }
         },
         yAxis: [{
+            gridLineColor: '#fff',
             labels: {
                 formatter: function() { return "$" + this.value; },
                 style: {
@@ -70,11 +73,18 @@ $(function () {
                 text: null
             },
             min: 0,
-            max: 5
+            max: 5,
+            minColor: '#fff'
         },
         {
+            gridLineColor: '#fff',
             title: {
                 text: null
+            },
+            labels: {
+                style: {
+                    color:'#fff'
+                }
             },
             opposite: true,
             min: 0,
@@ -106,7 +116,8 @@ $(function () {
             enableMouseTracking:false,
             name: 'mood',
             yAxis: 1,
-            data: mood
+            data: mood,
+            color:'#FFFF00'
         },
         {
             marker: {
@@ -115,7 +126,8 @@ $(function () {
             enableMouseTracking:false,
             name: 'sales',
             yAxis: 1,
-            data: sales
+            data: sales,
+            color: '#00FFFF'
         },
         {
             marker: {
@@ -124,7 +136,8 @@ $(function () {
             enableMouseTracking:false,
             name: 'productivity',
             yAxis: 1,
-            data: productivity
+            data: productivity,
+            color: '#FF00FF'
         }]
     });
 });
