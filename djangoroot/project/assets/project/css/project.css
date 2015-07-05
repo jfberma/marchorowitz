@@ -783,23 +783,26 @@ p.shipping {
 .tt-mood {
     color:#FFFF00;
     font-size:10px;
-    margin:0px;
-    padding:0px;
+    margin:4px 0;
+    padding:2px;
+    background:#999;
 }
 
 .tt-sales {
     color:#00FFFF;
     font-size:10px;
-    margin:0px;
-    padding:0px;
+    margin:4px 0;
+    padding:2px;
+    background:#999;
 }
 
 
 .tt-productivity {
     color:#FF00FF;
     font-size:10px;
-    margin:0px;
-    padding:0px;
+    margin:4px 0px;
+    padding:2px;
+    background:#999;
 }
 
 
