@@ -60,10 +60,9 @@ http {
             proxy_redirect off;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Scheme $scheme;
-            proxy_connect_timeout 10;
-            proxy_read_timeout 10;
-            proxy_pass http://${project-env:backend-addr};
+            proxy_connect_timeout 360s;
             proxy_read_timeout 360s;
+            proxy_pass http://${project-env:backend-addr};
         }
 
         error_page   500 502 503 504  /50x.html;
