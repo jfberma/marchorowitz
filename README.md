@@ -15,4 +15,15 @@ Pretty much every aspect of marchorowitz.net can be managed via the [admin](http
 
 #### The Store
 
-To add/remove/edit items that are on sale, navigate to [Pieces](https://www.marchorowitz.net/admin/project/piece/) section of the admin. Here you can edit/remove and of the existing peices, or add a new one. 
+##### Pieces
+
+To add/remove/edit items that are on sale, navigate to [Pieces](https://www.marchorowitz.net/admin/project/piece/) section of the admin. Here you can edit/remove any of the existing peices, or add a new one. When adding, you will have to enter all of the appropriate details such as title, price in hCoin and an image. 
+
+From the [pieces](https://www.marchorowitz.net/admin/project/piece/) overview page, you also have the ability to change the order in which the pieces appear on the site by clicking on the up and down arrows in the order column.
+
+##### Piece Categories
+
+Each piece requires an assigned category. Cateogies are represented by color and determine where the item shows up on the site (i.e. [blue](https://www.marchorowitz.net/pieces/blue/) or [grey](https://www.marchorowitz.net/pieces/grey/).
+
+To view all of the categories, visit the [piece categorys](https://www.marchorowitz.net/admin/project/piececategory/) page (Djano auto-appends an "s" to the page name, hense the funny spelling). 
+
