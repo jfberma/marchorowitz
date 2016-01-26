@@ -9,6 +9,8 @@ marchorowitz.net is a Django 1.6 app that is managed by Supervisor and configure
 
 marchorowitz.net is hosted on TODO
 
+## Contents
+
 ## Operation
 
 Pretty much every aspect of marchorowitz.net can be managed via the [admin](https://www.marchorowitz.net/admin/)
