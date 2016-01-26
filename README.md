@@ -23,7 +23,7 @@ From the [pieces](https://www.marchorowitz.net/admin/project/piece/) overview pa
 
 ##### Piece Categories
 
-Each piece requires an assigned category. Cateogies are represented by color and determine where the item shows up on the site (i.e. [blue](https://www.marchorowitz.net/pieces/blue/) or [grey](https://www.marchorowitz.net/pieces/grey/).
+Each piece requires an assigned category. Cateogies are represented by color and determine where the item shows up on the site (i.e. [blue](https://www.marchorowitz.net/pieces/blue/) or [grey](https://www.marchorowitz.net/pieces/grey/)).
 
-To view all of the categories, visit the [piece categorys](https://www.marchorowitz.net/admin/project/piececategory/) page (Djano auto-appends an "s" to the page name, hense the funny spelling). 
+To view all of the categories, visit the [piece categorys](https://www.marchorowitz.net/admin/project/piececategory/) page (Djano auto-appends an "s" to the page name, hense the funny spelling). From here, you can add and edit categories. Each category has a name, a Hex Color Value (the color that will show up in the site navigation), and a top and bottom hex color used to determine the gradient for the background of that category.
 
