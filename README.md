@@ -49,3 +49,15 @@ To view all of the categories, visit the [piece categorys](https://www.marchorow
 You can view all of the orders by visiting the [orders](https://www.marchorowitz.net/admin/shop/order/) page. Click on an order to view it's details (user, address, date, etc.). You can also change the order's status (to "shipped" for example).
 
 #### hCoin
+
+##### Coins
+
+* There are 3,000,000 hCoin. 
+* Each coin has one owner. 
+* Each coin was originally owned by marc.horowitz
+* When a purchase is made, hCoins are transfered from a user back to marc.horowitz
+* There are two main ways for a user to acquire hCoin: Mining and buying
+
+##### Mining hCoin
+
+A user can "mine" for hCoin by clicking on the pick icon in the site nav.
