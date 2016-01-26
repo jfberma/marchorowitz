@@ -44,4 +44,4 @@ To view all of the categories, visit the [piece categorys](https://www.marchorow
 
 ##### Orders
 
-You can view all of the orders by visiting the [orders](https://www.marchorowitz.net/admin/shop/order/) page.
+You can view all of the orders by visiting the [orders](https://www.marchorowitz.net/admin/shop/order/) page. Click on an order to view it's details (user, address, date, etc.). You can also change the order's status (to "shipped" for example).
