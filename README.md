@@ -41,3 +41,7 @@ To view all of the categories, visit the [piece categorys](https://www.marchorow
 * Upon success, the user and marc.horowitz will receive emails confirming the transaction
 
 **NOTE:** An item is NOT marked sold automatically. This was done upon request so that Marc could verify the purchase himself. The item needs to be manaully marked as sold (check the "sold" box).
+
+##### Orders
+
+You can view all of the orders by visiting the [orders](https://www.marchorowitz.net/admin/shop/order/) page.
