@@ -76,4 +76,14 @@ Ad hoc transactions can be made on this page by on this page by clickin the "Add
 
 ##### hCoin Value
 
+The value of a single hCoin is effected by three different "influencers":
 
+* Mood
+* Productivity
+* Sales
+
+hCoin value is calculated by looking at the day-over-day difference of the influencers and multiplying those values by a "weight" which is set in [Coin Settings](https://www.marchorowitz.net/admin/coin/coinsettings/):
+
+```
+hCoinValueToday = hCoinValueYesterday + (((MoodToday - MoodYesterday) * MoodWeight) + ((ProdToday - ProdYesterday) * ProdWeight) + ((SalesToday - SalesYesterday) * SalesWeight))
+```
