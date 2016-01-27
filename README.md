@@ -87,3 +87,11 @@ hCoin value is calculated by looking at the day-over-day difference of the influ
 ```
 hCoinValueToday = hCoinValueYesterday + (((MoodToday - MoodYesterday) * MoodWeight) + ((ProdToday - ProdYesterday) * ProdWeight) + ((SalesToday - SalesYesterday) * SalesWeight))
 ```
+
+Changing an influencers weight will change how much effect that influencer has over the price of hCoin.
+
+Influencers were designed to be updated everyday, but if a day is missed a cron job will automatically apply yesterday's values to today.
+
+To enter new influencer, go to the [Coin stats](https://www.marchorowitz.net/admin/coin/coinstat/) page in the admin and click **Add coin stat**. Enter your influencer values. You can also add a description. Hit save and return to the Coin stats page. You can see the new value of hCoin here. Likewise, you can visit the [about](https://www.marchorowitz.net/about/) section of the site to see the current version of hCoin.
+
+
