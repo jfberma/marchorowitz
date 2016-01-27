@@ -67,3 +67,7 @@ The amount of points per hCoin is configurable through [Coin Settings](https://w
 ##### Buying hCoin
 
 A user can also purhcase hCoin. When a user purchases hCoin the dollar amount is calculated based on the current value of hCoin and taken through the [Stripe](https://stripe.com/) checkout procedure. Marc can monitor these purchases via the Stripe dashboard.
+
+##### Transaction
+
+Everytime a coin changes owner (eg. during a purchase or while mining) a Transaction is recorded. A list of every transaction can be found on the [Transactions](https://www.marchorowitz.net/admin/coin/transaction/) page.
