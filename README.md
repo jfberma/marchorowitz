@@ -73,3 +73,7 @@ A user can also purhcase hCoin. When a user purchases hCoin the dollar amount is
 Everytime a coin changes owner (eg. during a purchase or while mining) a Transaction is recorded. A list of every transaction can be found on the [Transactions](https://www.marchorowitz.net/admin/coin/transaction/) page. 
 
 Ad hoc transactions can be made on this page by on this page by clickin the "Add transaction" button.
+
+##### hCoin Value
+
+
