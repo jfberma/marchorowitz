@@ -60,4 +60,6 @@ You can view all of the orders by visiting the [orders](https://www.marchorowitz
 
 ##### Mining hCoin
 
-A user can "mine" for hCoin by clicking on the pick icon in the site nav.
+A user can "mine" for hCoin by clicking on the pick icon in the site nav. By doing so, they will be presented with a game of snake. The user will be awarded with an hCoin once they reach a certain amount of points.
+
+The amount of points per hCoin is configurable through [Coin Settings](https://www.marchorowitz.net/admin/coin/coinsettings/) page. To change the points-per-coin, simply edit the **Points per Coin** column in the existing row.
