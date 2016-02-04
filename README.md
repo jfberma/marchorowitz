@@ -7,8 +7,6 @@ The psuedo-crypto-currency-based art store of Marc Horowitz
 
 marchorowitz.net is a Django 1.6 app that is managed by Supervisor and configured to be served by nginx. The site features a custom psuedo-crypto-currency called hCoin. The site contains a store (django_shop app) that is customized to accept hCoin as payment instead of dollars. The value of hCoin is determined by Marc's mood.
 
-marchorowitz.net is hosted on TODO
-
 ## Contents
 
 ## Operation
@@ -93,5 +91,15 @@ Changing an influencers weight will change how much effect that influencer has o
 Influencers were designed to be updated everyday, but if a day is missed a cron job will automatically apply yesterday's values to today.
 
 To enter new influencer, go to the [Coin stats](https://www.marchorowitz.net/admin/coin/coinstat/) page in the admin and click **Add coin stat**. Enter your influencer values. You can also add a description. Hit save and return to the Coin stats page. You can see the new value of hCoin here. Likewise, you can visit the [about](https://www.marchorowitz.net/about/) section of the site to see the current version of hCoin.
+
+## Development
+
+marchorowitz.net is... 
+* A [Django](https://www.djangoproject.com/) app with a [postgresql](http://www.postgresql.org/) database
+* Serverd by [nginx](https://www.nginx.com/resources/wiki/), using [wsgi](http://wsgi.readthedocs.org/en/latest/).
+* Hosted on 2 EC2 micro instances (one for main site, one for deep web) at [AWS](https://aws.amazon.com)
+
+
+
 
 
