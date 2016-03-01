@@ -92,6 +92,13 @@ Influencers were designed to be updated everyday, but if a day is missed a cron 
 
 To enter new influencer, go to the [Coin stats](https://www.marchorowitz.net/admin/coin/coinstat/) page in the admin and click **Add coin stat**. Enter your influencer values. You can also add a description. Hit save and return to the Coin stats page. You can see the new value of hCoin here. Likewise, you can visit the [about](https://www.marchorowitz.net/about/) section of the site to see the current version of hCoin.
 
+#### Deep Web Site
+
+The deep web portion of the marchorowitz project is a light-weight, basic gallery. Because of the nature (and speed) of the deep web, we have kept this area as optimized and simple as possible. Thus, there is no real backend. To update this page, simply upload a JPG via FTP to the designated directory (details below)
+
+* Open your favorite FTP client (such as Cyberduck on OSX).
+* Connect to server **54.175.58.254** with the username **marc** and password **\*H0r0w1tz\***
+
 ## Development
 
 marchorowitz.net is... 
