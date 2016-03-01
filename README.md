@@ -97,7 +97,7 @@ To enter new influencer, go to the [Coin stats](https://www.marchorowitz.net/adm
 The deep web portion of the marchorowitz project is a light-weight, basic gallery. Because of the nature (and speed) of the deep web, we have kept this area as optimized and simple as possible. Thus, there is no real backend. To update this page, simply upload a JPG via FTP to the designated directory (details below)
 
 * Open your favorite FTP client (such as Cyberduck on OSX).
-* Connect to server **54.175.58.254** with the username **marc** and password **\*H0r0w1tz\***
+* Connect to server **54.175.58.254** with the username **marc** and password **\*H0r0w1tz***
 
 ## Development
 
