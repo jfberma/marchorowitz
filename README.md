@@ -9,7 +9,7 @@ marchorowitz.net is a Django 1.6 app that is managed by Supervisor and configure
 
 ## Contents
 * [Operation](#operation)
-    [The Store](#the-store)
+    * [The Store](#the-store)
 
 ## Operation
 
