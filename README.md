@@ -98,6 +98,10 @@ The deep web portion of the marchorowitz project is a light-weight, basic galler
 
 * Open your favorite FTP client (such as Cyberduck on OSX).
 * Connect to server **54.175.58.254** with the username **marc** and password **\*H0r0w1tz***
+* If you have issues connecting, make sure the **Connect Mode** is set to **Active (PORT)**
+* Once inside, go into the site directory, and then into the pieces directory.
+* Any image uploaded to this folder will display on the site (NOTE: MUST BE JPG)
+* The images will appear on the site in ascending alphabetical order based on the file name. (ie. Simcor-Horowitz-January2014-001.jpg will appear before Simcor-Horowitz-January2014-002.jpg)
 
 ## Development
 
