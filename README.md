@@ -8,8 +8,8 @@ The psuedo-crypto-currency-based art store of Marc Horowitz
 marchorowitz.net is a Django 1.6 app that is managed by Supervisor and configured to be served by nginx. The site features a custom psuedo-crypto-currency called hCoin. The site contains a store (django_shop app) that is customized to accept hCoin as payment instead of dollars. The value of hCoin is determined by Marc's mood.
 
 ## Contents
-1. [Operation](#operation)
-    1. [The Store](#the-store)
+* [Operation](#operation)
+    [The Store](#the-store)
 
 ## Operation
 
